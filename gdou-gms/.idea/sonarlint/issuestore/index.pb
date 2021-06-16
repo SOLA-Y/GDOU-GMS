@@ -29,17 +29,3 @@ e
 5src/main/java/com/gdou/gms/mapper/UserInfoMapper.java,4\4\441ab1c122e98fa200c8f55fe1c07d9bc1542d7d
 ^
 .src/main/java/com/gdou/gms/util/Generator.java,6\e\6ef75403ad955ee9ad6fa7fc79c78d06c63dea28
-b
-2src/main/java/com/gdou/gms/GdouGmsApplication.java,0\8\089cef9a7b43e99e4c3a885edd906af13393409a
-g
-7src/test/java/com/gdou/gms/service/UserServiceTest.java,3\c\3c5401cbd5a413724f2674b913d19dd8958b2048
-i
-9src/main/java/com/gdou/gms/controller/UserController.java,4\2\42c6f85e7a169aef7456eeb5f884b7592f4a7356
-i
-9src/test/java/com/gdou/gms/mapper/UserInfoMapperTest.java,e\1\e17022a6da1b9f1f137f2718ab2d546a764be7fb
-a
-1src/main/java/com/gdou/gms/mapper/UserMapper.java,1\5\152da4d31b7c519bf028543bf5bc6590238d1952
-c
-3src/main/java/com/gdou/gms/service/UserService.java,8\e\8ead9c5a85ab72d12cdedd51c36dddfd1631c8bf
-l
-<src/main/java/com/gdou/gms/service/Impl/UserServiceImpl.java,8\7\87d61702807c0244193366512bb3cff30844d0c5

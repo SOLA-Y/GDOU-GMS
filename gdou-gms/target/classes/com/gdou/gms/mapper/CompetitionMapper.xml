@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdou.gms.mapper.CompetitionMapper">
+  <resultMap id="BaseResultMap" type="com.gdou.gms.pojo.Competition">
+    <id column="competId" jdbcType="VARCHAR" property="competid" />
+    <result column="compet_name" jdbcType="VARCHAR" property="competName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    <result column="userId" jdbcType="CHAR" property="userid" />
+    <result column="siteId" jdbcType="INTEGER" property="siteid" />
+    <result column="equId" jdbcType="INTEGER" property="equid" />
+    <result column="sorder_id" jdbcType="INTEGER" property="sorderId" />
+    <result column="eorder_id" jdbcType="INTEGER" property="eorderId" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Base_Column_List">
+    competId, compet_name, start_time, end_time, description, typeId, userId, siteId, 
+    equId, sorder_id, eorder_id
+  </sql>
+
+  <select id="selectByExample" parameterType="com.gdou.gms.pojo.CompetitionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from competition
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from competition
+    where competId = #{competid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from competition
+    where competId = #{competid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gdou.gms.pojo.CompetitionExample">
+    delete from competition
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gdou.gms.pojo.Competition">
+    insert into competition (competId, compet_name, start_time, 
+      end_time, description, typeId, 
+      userId, siteId, equId, 
+      sorder_id, eorder_id)
+    values (#{competid,jdbcType=VARCHAR}, #{competName,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, 
+      #{userid,jdbcType=CHAR}, #{siteid,jdbcType=INTEGER}, #{equid,jdbcType=INTEGER}, 
+      #{sorderId,jdbcType=INTEGER}, #{eorderId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdou.gms.pojo.Competition">
+    insert into competition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="competid != null">
+        competId,
+      </if>
+      <if test="competName != null">
+        compet_name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="typeid != null">
+        typeId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="siteid != null">
+        siteId,
+      </if>
+      <if test="equid != null">
+        equId,
+      </if>
+      <if test="sorderId != null">
+        sorder_id,
+      </if>
+      <if test="eorderId != null">
+        eorder_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="competid != null">
+        #{competid,jdbcType=VARCHAR},
+      </if>
+      <if test="competName != null">
+        #{competName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=CHAR},
+      </if>
+      <if test="siteid != null">
+        #{siteid,jdbcType=INTEGER},
+      </if>
+      <if test="equid != null">
+        #{equid,jdbcType=INTEGER},
+      </if>
+      <if test="sorderId != null">
+        #{sorderId,jdbcType=INTEGER},
+      </if>
+      <if test="eorderId != null">
+        #{eorderId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gdou.gms.pojo.CompetitionExample" resultType="java.lang.Long">
+    select count(*) from competition
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update competition
+    <set>
+      <if test="record.competid != null">
+        competId = #{record.competid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.competName != null">
+        compet_name = #{record.competName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null">
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeid != null">
+        typeId = #{record.typeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=CHAR},
+      </if>
+      <if test="record.siteid != null">
+        siteId = #{record.siteid,jdbcType=INTEGER},
+      </if>
+      <if test="record.equid != null">
+        equId = #{record.equid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sorderId != null">
+        sorder_id = #{record.sorderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.eorderId != null">
+        eorder_id = #{record.eorderId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update competition
+    set competId = #{record.competid,jdbcType=VARCHAR},
+      compet_name = #{record.competName,jdbcType=VARCHAR},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      description = #{record.description,jdbcType=VARCHAR},
+      typeId = #{record.typeid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=CHAR},
+      siteId = #{record.siteid,jdbcType=INTEGER},
+      equId = #{record.equid,jdbcType=INTEGER},
+      sorder_id = #{record.sorderId,jdbcType=INTEGER},
+      eorder_id = #{record.eorderId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdou.gms.pojo.Competition">
+    update competition
+    <set>
+      <if test="competName != null">
+        compet_name = #{competName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        typeId = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=CHAR},
+      </if>
+      <if test="siteid != null">
+        siteId = #{siteid,jdbcType=INTEGER},
+      </if>
+      <if test="equid != null">
+        equId = #{equid,jdbcType=INTEGER},
+      </if>
+      <if test="sorderId != null">
+        sorder_id = #{sorderId,jdbcType=INTEGER},
+      </if>
+      <if test="eorderId != null">
+        eorder_id = #{eorderId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where competId = #{competid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdou.gms.pojo.Competition">
+    update competition
+    set compet_name = #{competName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      typeId = #{typeid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=CHAR},
+      siteId = #{siteid,jdbcType=INTEGER},
+      equId = #{equid,jdbcType=INTEGER},
+      sorder_id = #{sorderId,jdbcType=INTEGER},
+      eorder_id = #{eorderId,jdbcType=INTEGER}
+    where competId = #{competid,jdbcType=VARCHAR}
+  </update>
+</mapper>
