@@ -4,6 +4,7 @@ import com.gdou.gms.mapper.UserInfoMapper;
 import com.gdou.gms.mapper.UserMapper;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
+import com.gdou.gms.pojo.UserInfoExample;
 import com.gdou.gms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -103,9 +104,9 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public List<UserInfo> queryUsersByCondition()
+    public List<UserInfo> queryUsersByCondition(UserInfoExample example)
     {
-        return null;
+        return userInfoMapper.selectByExample(example);
     }
 
 

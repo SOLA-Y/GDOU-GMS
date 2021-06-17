@@ -2,6 +2,7 @@ package com.gdou.gms.service;
 
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
+import com.gdou.gms.pojo.UserInfoExample;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public interface UserService
     
     public List<UserInfo> queryAllUsers();
 
-    public List<UserInfo> queryUsersByCondition();
+    public List<UserInfo> queryUsersByCondition(UserInfoExample example);
 
 }

@@ -3,8 +3,6 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 g
 7src/main/java/com/gdou/gms/pojo/CompetitionExample.java,7\6\766fa99df698a874a17b5ea5ed449141f27b0c91
-]
--src/main/java/com/gdou/gms/pojo/EquOrder.java,a\e\aeef4afea314fb1f6b4d957d51d576c04e9ed83c
 _
 /src/main/java/com/gdou/gms/pojo/Regulation.java,2\e\2ede653886effef1b8559b284f14781471d879de
 \
@@ -21,8 +19,6 @@ Y
 )src/main/java/com/gdou/gms/pojo/User.java,4\e\4e84660c895866c2eb81026b77aaf182f44d2ba6
 Y
 )src/main/java/com/gdou/gms/pojo/Site.java,f\6\f6e1a88bc9ca45fec2c2c1b71d57e7b1bc2611bc
-]
--src/main/java/com/gdou/gms/pojo/UserInfo.java,3\5\35830b0738229d6266e07a015672de889899ebde
 d
 4src/main/java/com/gdou/gms/pojo/UserInfoExample.java,7\3\73ca27474e427e28f860db8bbc0e9af46ebe8dc9
 e

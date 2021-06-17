@@ -5,6 +5,6 @@ spring:
     url: jdbc:mysql://localhost:3306/gmsdb?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
-  mvc:
+#  mvc:
     # 配置静态资源的访问前缀路径
-    static-path-pattern: /static/**
+#    static-path-pattern: /static/**
