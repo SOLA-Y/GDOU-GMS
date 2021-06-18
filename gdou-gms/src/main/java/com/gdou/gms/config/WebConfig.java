@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer
         excludePaths.add("/login");
         excludePaths.add("/css/**");
         excludePaths.add("/js/**");
-        // excludePaths.add("/css/**");
+        excludePaths.add("/getMsg");
         // excludePaths.add("/css/**");
         // excludePaths.add("/css/**");
 

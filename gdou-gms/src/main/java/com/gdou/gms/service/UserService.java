@@ -15,12 +15,12 @@ public interface UserService
 
     public boolean addUsers(List<UserInfo> userInfoList, List<User> userList);
 
-    public boolean updatePassword(User user, String password);
+    public boolean updatePassword(String originalPassword, User user);
 
     public boolean updateUserInfo(UserInfo userInfo);
 
     public UserInfo queryUserInfo(String userId);
-    
+
     public List<UserInfo> queryAllUsers();
 
     public List<UserInfo> queryUsersByCondition(UserInfoExample example);

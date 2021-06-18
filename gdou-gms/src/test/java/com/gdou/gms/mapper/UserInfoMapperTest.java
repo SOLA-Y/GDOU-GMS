@@ -1,5 +1,8 @@
 package com.gdou.gms.mapper;
 
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.DigestUtil;
+import cn.hutool.crypto.digest.Digester;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.pojo.UserInfoExample;
@@ -22,7 +25,17 @@ class UserInfoMapperTest
     @Test
     void testEncryptMD5()
     {
-        System.out.println(Encrypt.encryptMD5("1234567890"));
+        System.out.println(Encrypt.encryptMD5("1234567890") + "，长度=" + Encrypt.encryptMD5("1234567890").length());
+
+        System.out.println(DigestUtil.md5Hex("1234567890") + "，长度=" + DigestUtil.md5Hex("1234567890").length());
+
+        System.out.println(DigestUtil.md5Hex(DigestUtil.md5Hex("1234567890")) + "，长度=" + DigestUtil.md5Hex(DigestUtil.md5Hex("1234567890")).length());
+
+        Digester md5 = new Digester(DigestAlgorithm.MD5);
+        // 加盐
+        md5.setSalt("saltTest".getBytes());
+        System.out.println(md5.digestHex("12345") + "，长度=" + md5.digestHex("12345").length());
+
     }
 
     @Test

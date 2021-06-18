@@ -1,5 +1,6 @@
 package com.gdou.gms.service.Impl;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import com.gdou.gms.mapper.UserInfoMapper;
 import com.gdou.gms.mapper.UserMapper;
 import com.gdou.gms.pojo.User;
@@ -25,10 +26,11 @@ public class UserServiceImpl implements UserService
     public User login(User user)
     {
         List<User> userList = userMapper.selectByExample(null);
+        String password = DigestUtil.md5Hex(user.getPassword());
 
         for (User user1 : userList)
         {
-            if (user.getUserid().equals(user1.getUserid()) && user.getPassword().equals(user1.getPassword()))
+            if (user.getUserid().equals(user1.getUserid()) && password.equals(user1.getPassword()))
             {
                 return user1;
             }
@@ -62,6 +64,7 @@ public class UserServiceImpl implements UserService
 
         for (User user : userList)
         {
+            user.setPassword(DigestUtil.md5Hex(user.getPassword()));
             insert2 += userMapper.insert(user);
         }
 
@@ -69,8 +72,9 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public boolean updatePassword(User user, String password)
+    public boolean updatePassword(String originalPassword, User user)
     {
+        String password = DigestUtil.md5Hex(originalPassword);
         User dbUser = userMapper.selectByPrimaryKey(user.getUserid());
 
         if (password.equals(dbUser.getPassword()))

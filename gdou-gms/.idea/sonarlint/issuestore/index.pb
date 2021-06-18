@@ -1,6 +1,4 @@
 
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 g
 7src/main/java/com/gdou/gms/pojo/CompetitionExample.java,7\6\766fa99df698a874a17b5ea5ed449141f27b0c91
 _
@@ -25,3 +23,9 @@ e
 5src/main/java/com/gdou/gms/mapper/UserInfoMapper.java,4\4\441ab1c122e98fa200c8f55fe1c07d9bc1542d7d
 ^
 .src/main/java/com/gdou/gms/util/Generator.java,6\e\6ef75403ad955ee9ad6fa7fc79c78d06c63dea28
+a
+1src/main/java/com/gdou/gms/mapper/UserMapper.java,1\5\152da4d31b7c519bf028543bf5bc6590238d1952
+]
+-src/main/java/com/gdou/gms/pojo/UserInfo.java,3\5\35830b0738229d6266e07a015672de889899ebde
+l
+<src/main/java/com/gdou/gms/interceptor/LoginInterceptor.java,0\7\070be6955eba872acda0abf2f0ccfcfbcb8541f8
