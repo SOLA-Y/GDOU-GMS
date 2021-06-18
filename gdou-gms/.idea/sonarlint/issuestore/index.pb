@@ -14,8 +14,6 @@ h
 f
 6src/main/java/com/gdou/gms/mapper/EquipmentMapper.java,4\2\42913d5495de2f66e3766b946d19702356eb2956
 Y
-)src/main/java/com/gdou/gms/pojo/User.java,4\e\4e84660c895866c2eb81026b77aaf182f44d2ba6
-Y
 )src/main/java/com/gdou/gms/pojo/Site.java,f\6\f6e1a88bc9ca45fec2c2c1b71d57e7b1bc2611bc
 d
 4src/main/java/com/gdou/gms/pojo/UserInfoExample.java,7\3\73ca27474e427e28f860db8bbc0e9af46ebe8dc9
