@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -30,6 +31,13 @@ public class UserController
     public String getMsg()
     {
         return "你好";
+    }
+
+    // 验证token的有效性
+    @GetMapping("/checkToken")
+    public Boolean checkToken(HttpServletRequest request)
+    {
+        return JwtUtil.checkToken(request.getHeader("token"));
     }
 
     // 登录

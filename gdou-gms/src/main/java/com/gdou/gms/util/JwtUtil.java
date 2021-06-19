@@ -35,7 +35,7 @@ public class JwtUtil
 
     }
 
-    // 解密
+    // 解析token
     public void parse(String token)
     {
         JwtParser jwtParser = Jwts.parser();
@@ -47,6 +47,26 @@ public class JwtUtil
         System.out.println(claims.getId());
         System.out.println(claims.getSubject());
         System.out.println(claims.getExpiration());
+    }
+
+    // 判断token的有效性
+    public static boolean checkToken(String token)
+    {
+        if (token == null || token.equals(""))
+        {
+            return false;
+        }
+
+        try
+        {
+            // 判断这个解析操作是否正常，如果正常则说明token有效，抛异常则说明token失效
+            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(signature).parseClaimsJws(token);
+        } catch (Exception e)
+        {
+            return false;
+        }
+
+        return true;
     }
 
 }
