@@ -1,5 +1,6 @@
 package com.gdou.gms.mapper;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.digest.Digester;
@@ -48,6 +49,10 @@ class UserInfoMapperTest
         System.out.println(token);
 
         jwtUtil.parse(token);
+
+        System.out.println(StrUtil.isNotBlank(""));
+        System.out.println(StrUtil.isNotBlank(null));
+        System.out.println(StrUtil.isNotBlank("   234   "));
     }
 
     @Test
@@ -70,7 +75,7 @@ class UserInfoMapperTest
         // 创建Criteria，这个Criteria就是用来拼装查询条件
         UserInfoExample.Criteria criteria = example.createCriteria();
         // 用户名模糊查询，性别精确查询
-        criteria.andUsernameLike("%S%");
+        criteria.andUsernameLike("%生%");
         criteria.andGenderEqualTo("男");
 
         List<UserInfo> userInfoList1 = userInfoMapper.selectByExample(example);
@@ -79,6 +84,16 @@ class UserInfoMapperTest
             System.out.println(userInfo);
         }
         System.out.println("----------------------------------------");
+
+
+        UserInfoExample example1 = new UserInfoExample();
+        UserInfoExample.Criteria criteria1 = example1.createCriteria();
+        // criteria1.andGenderEqualTo(null);
+
+        for (UserInfo userInfo : userInfoMapper.selectByExample(example1))
+        {
+            System.out.println(userInfo);
+        }
 
     }
 

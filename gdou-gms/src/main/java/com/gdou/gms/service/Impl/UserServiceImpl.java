@@ -1,12 +1,15 @@
 package com.gdou.gms.service.Impl;
 
 import cn.hutool.crypto.digest.DigestUtil;
+import cn.hutool.json.JSONUtil;
 import com.gdou.gms.mapper.UserInfoMapper;
 import com.gdou.gms.mapper.UserMapper;
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.pojo.UserInfoExample;
 import com.gdou.gms.service.UserService;
+import com.gdou.gms.util.ExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,8 +45,16 @@ public class UserServiceImpl implements UserService
     // @Transactional：事务，将下面的所有操作视为一个操作，所有操作成功才提交到数据库，不然就回滚
     @Override
     @Transactional
-    public Boolean addAdministrator(UserInfo userInfo, User user)
+    public Boolean setAdministrator(String userId)
     {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserid(userId);
+        userInfo.setRoleid(2);
+
+        User user = new User();
+        user.setUserid(userId);
+        user.setRoleid(2);
+
         int update1 = userInfoMapper.updateByPrimaryKeySelective(userInfo);
         int update2 = userMapper.updateByPrimaryKeySelective(user);
 
@@ -52,23 +63,33 @@ public class UserServiceImpl implements UserService
 
     @Override
     @Transactional
-    public Boolean addUsers(List<UserInfo> userInfoList, List<User> userList)
+    public Integer addUsers(String jsonString)
     {
         int insert1 = 0;
         int insert2 = 0;
 
+        List<UserInfo> userInfoList = JSONUtil.toList(jsonString, UserInfo.class);
+        List<User> userList = JSONUtil.toList(jsonString, User.class);
+
         for (UserInfo userInfo : userInfoList)
         {
-            insert1 += userInfoMapper.insert(userInfo);
+            // 查询到的用户不存在才插入到表中
+            if (userInfoMapper.selectByPrimaryKey(userInfo.getUserid()) == null)
+            {
+                insert1 += userInfoMapper.insert(userInfo);
+            }
         }
 
         for (User user : userList)
         {
-            user.setPassword(DigestUtil.md5Hex(user.getPassword()));
-            insert2 += userMapper.insert(user);
+            if (userMapper.selectByPrimaryKey(user.getUserid()) == null)
+            {
+                user.setPassword(DigestUtil.md5Hex(user.getPassword()));
+                insert2 += userMapper.insert(user);
+            }
         }
 
-        return insert1 == insert2;
+        return insert1 == insert2 ? insert1 : -1;
     }
 
     @Override
@@ -79,9 +100,10 @@ public class UserServiceImpl implements UserService
 
         if (password.equals(dbUser.getPassword()))
         {
+            user.setPassword(DigestUtil.md5Hex(user.getPassword()));
             int update = userMapper.updateByPrimaryKeySelective(user);
 
-            return update != 0;
+            return update == 1;
         }
 
         return false;
@@ -92,7 +114,7 @@ public class UserServiceImpl implements UserService
     {
         int update = userInfoMapper.updateByPrimaryKeySelective(userInfo);
 
-        return update != 0;
+        return update == 1;
     }
 
     @Override
@@ -108,9 +130,33 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public List<UserInfo> queryUsersByCondition(UserInfoExample example)
+    public List<UserInfo> queryUsersByCondition(Condition condition)
     {
+        UserInfoExample example = ExampleUtil.createUserInfoExample(condition);
         return userInfoMapper.selectByExample(example);
+    }
+
+    @Override
+    public Boolean deleteUser(String userId)
+    {
+        int delete1 = userMapper.deleteByPrimaryKey(userId);
+        int delete2 = userInfoMapper.deleteByPrimaryKey(userId);
+
+        return delete1 == 1 && delete2 == 1;
+    }
+
+    @Override
+    public Boolean removeAdministrator(String userId)
+    {
+        User user = new User(userId, null, 1);
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserid(userId);
+        userInfo.setRoleid(1);
+
+        int update1 = userMapper.updateByPrimaryKeySelective(user);
+        int update2 = userInfoMapper.updateByPrimaryKeySelective(userInfo);
+
+        return update1 == 1 && update2 == 1;
     }
 
 

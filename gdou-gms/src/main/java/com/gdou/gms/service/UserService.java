@@ -1,5 +1,6 @@
 package com.gdou.gms.service;
 
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.pojo.UserInfoExample;
@@ -11,9 +12,9 @@ public interface UserService
 
     public UserInfo login(User user);
 
-    public Boolean addAdministrator(UserInfo userInfo, User user);
+    public Boolean setAdministrator(String userId);
 
-    public Boolean addUsers(List<UserInfo> userInfoList, List<User> userList);
+    public Integer addUsers(String jsonString);
 
     public Boolean updatePassword(String originalPassword, User user);
 
@@ -23,6 +24,11 @@ public interface UserService
 
     public List<UserInfo> queryAllUsers();
 
-    public List<UserInfo> queryUsersByCondition(UserInfoExample example);
+    public List<UserInfo> queryUsersByCondition(Condition condition);
+
+    public Boolean deleteUser(String userId);
+
+    public Boolean removeAdministrator(String userId);
+
 
 }

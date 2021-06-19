@@ -1,17 +1,14 @@
 package com.gdou.gms.controller;
 
 import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.service.UserService;
 import com.gdou.gms.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -66,76 +63,83 @@ public class UserController
         return null;
     }
 
-    // 添加学生
-    @PostMapping("/addUsers")
-    public String addUsers(String jsonString, RedirectAttributes redirectAttributes)
+    // 添加普通用户
+    @GetMapping("/addUsers")
+    public Object addUsers(@RequestParam(value = "usersJson") String jsonString)
     {
-        List<UserInfo> userInfoList = JSONUtil.toList(jsonString, UserInfo.class);
-        List<User> userList = JSONUtil.toList(jsonString, User.class);
+        JSONObject jsonObject = new JSONObject();
+        Integer add = userService.addUsers(jsonString);
 
-        boolean add = userService.addUsers(userInfoList, userList);
-
-        if (add)
+        if (add != -1)
         {
-            redirectAttributes.addFlashAttribute("msg", "添加用户成功");
+            jsonObject.putOpt("msg", "添加用户成功");
+            jsonObject.putOpt("count", add);
         }
         else
         {
-            redirectAttributes.addFlashAttribute("msg", "添加用户失败");
+            jsonObject.putOpt("msg", "添加用户失败");
         }
 
-        return "redirect:/user_add";
+        return jsonObject;
     }
 
-    // 添加管理员
-    @PostMapping("/addAdmin")
-    public String addAdministrator(String userId)
+    // 设置管理员权限
+    @GetMapping("/setAdmin")
+    public Boolean setAdministrator(@RequestParam(value = "userId") String userId)
     {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserid(userId);
-        userInfo.setRoleid(2);
-
-        User user = new User();
-        user.setUserid(userId);
-        user.setRoleid(2);
-
-        userService.addAdministrator(userInfo, user);
-
-        return "redirect:/queryAllUsers";
+        return userService.setAdministrator(userId);
     }
 
-    // 更改密码
+    // 更新密码
     @PostMapping("/updatePassword")
-    public String updatePassword(String originalPassword, User user, Model model)
+    public Boolean updatePassword(@RequestParam(value = "originalPwd") String originalPwd, @RequestBody User user)
     {
-        boolean update = userService.updatePassword(originalPassword, user);
+        System.out.println("原密码" + originalPwd);
+        System.out.println("用户userId + 新密码" + user);
 
-        if (update)
-        {
-            model.addAttribute("msg", "密码修改成功");
-        }
-        else
-        {
-            model.addAttribute("msg", "原密码输入错误");
-        }
+        return userService.updatePassword(originalPwd, user);
+    }
 
-        return "redirect:/queryUserInfo?userId=" + user.getUserid();
-
+    // 更新用户信息
+    @PostMapping("/updateUserInfo")
+    public Boolean updateUserInfo(@RequestBody UserInfo userInfo)
+    {
+        return userService.updateUserInfo(userInfo);
     }
 
     // 查询一个用户的信息
     @GetMapping("/queryUserInfo")
-    public ModelAndView queryUserInfo(String userId)
+    public UserInfo queryUserInfo(@RequestParam(value = "userId") String userId)
     {
-        UserInfo userInfo = userService.queryUserInfo(userId);
-        ModelAndView mv = new ModelAndView();
-
-        mv.addObject("userInfo", userInfo);
-        mv.setViewName("user_query");
-
-        return mv;
-
+        return userService.queryUserInfo(userId);
     }
 
+    // 查询所有用户
+    @GetMapping("/queryAllUsers")
+    public List<UserInfo> queryUserInfo()
+    {
+        return userService.queryAllUsers();
+    }
+
+    // 根据条件查询用户
+    @PostMapping("/queryUsersByCondition")
+    public List<UserInfo> queryUsersByCondition(@RequestBody Condition condition)
+    {
+        return userService.queryUsersByCondition(condition);
+    }
+
+    // 删除用户
+    @GetMapping("/deleteUser")
+    public Boolean deleteUser(@RequestParam(value = "userId") String userId)
+    {
+        return userService.deleteUser(userId);
+    }
+
+    // 移除管理员权限
+    @GetMapping("/removeAdmin")
+    public Boolean removeAdministrator(@RequestParam(value = "userId") String userId)
+    {
+        return userService.removeAdministrator(userId);
+    }
 
 }

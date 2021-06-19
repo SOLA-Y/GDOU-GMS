@@ -15,8 +15,6 @@ f
 6src/main/java/com/gdou/gms/mapper/EquipmentMapper.java,4\2\42913d5495de2f66e3766b946d19702356eb2956
 Y
 )src/main/java/com/gdou/gms/pojo/Site.java,f\6\f6e1a88bc9ca45fec2c2c1b71d57e7b1bc2611bc
-d
-4src/main/java/com/gdou/gms/pojo/UserInfoExample.java,7\3\73ca27474e427e28f860db8bbc0e9af46ebe8dc9
 e
 5src/main/java/com/gdou/gms/mapper/UserInfoMapper.java,4\4\441ab1c122e98fa200c8f55fe1c07d9bc1542d7d
 ^
@@ -27,5 +25,3 @@ a
 -src/main/java/com/gdou/gms/pojo/UserInfo.java,3\5\35830b0738229d6266e07a015672de889899ebde
 ]
 -src/main/java/com/gdou/gms/pojo/EquOrder.java,a\e\aeef4afea314fb1f6b4d957d51d576c04e9ed83c
-^
-.src/main/java/com/gdou/gms/pojo/Condition.java,d\f\dfea0a0d6229ebf2ea378da8e5b80824f5638629
