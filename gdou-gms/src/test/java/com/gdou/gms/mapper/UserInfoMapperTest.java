@@ -7,6 +7,7 @@ import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.pojo.UserInfoExample;
 import com.gdou.gms.util.Encrypt;
+import com.gdou.gms.util.JwtUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,6 +37,17 @@ class UserInfoMapperTest
         md5.setSalt("saltTest".getBytes());
         System.out.println(md5.digestHex("12345") + "，长度=" + md5.digestHex("12345").length());
 
+    }
+
+    @Test
+    void testToken()
+    {
+        JwtUtil jwtUtil = new JwtUtil();
+        String token = jwtUtil.createToken(new UserInfo("201811701307", null, null, null, null, 3));
+
+        System.out.println(token);
+
+        jwtUtil.parse(token);
     }
 
     @Test

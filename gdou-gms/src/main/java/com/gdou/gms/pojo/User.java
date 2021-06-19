@@ -1,10 +1,15 @@
 package com.gdou.gms.pojo;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class User implements Serializable {
+
+    @Size(min = 12, max = 12, message = "用户账号长度必须为12位")
     private String userid;
 
+    @Size(min = 10, max = 16, message = "密码长度必须介于10到16位之间")
     private String password;
 
     private Integer roleid;

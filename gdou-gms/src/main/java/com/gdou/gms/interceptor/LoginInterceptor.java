@@ -39,7 +39,7 @@ public class LoginInterceptor implements HandlerInterceptor
         }
 
         // 拦截，然后重定向到登录页面
-        response.sendRedirect("/");
+        // response.sendRedirect("/");
 
         return false;
     }

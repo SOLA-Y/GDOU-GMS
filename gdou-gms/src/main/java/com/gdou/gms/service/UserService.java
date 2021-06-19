@@ -9,15 +9,15 @@ import java.util.List;
 public interface UserService
 {
 
-    public User login(User user);
+    public UserInfo login(User user);
 
-    public boolean addAdministrator(UserInfo userInfo, User user);
+    public Boolean addAdministrator(UserInfo userInfo, User user);
 
-    public boolean addUsers(List<UserInfo> userInfoList, List<User> userList);
+    public Boolean addUsers(List<UserInfo> userInfoList, List<User> userList);
 
-    public boolean updatePassword(String originalPassword, User user);
+    public Boolean updatePassword(String originalPassword, User user);
 
-    public boolean updateUserInfo(UserInfo userInfo);
+    public Boolean updateUserInfo(UserInfo userInfo);
 
     public UserInfo queryUserInfo(String userId);
 

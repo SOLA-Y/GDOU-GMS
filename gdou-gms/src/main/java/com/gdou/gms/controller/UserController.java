@@ -1,11 +1,14 @@
 package com.gdou.gms.controller;
 
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.service.UserService;
+import com.gdou.gms.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -17,6 +20,8 @@ import java.util.List;
 @RestController
 public class UserController
 {
+    @Autowired
+    private HttpSession session;
 
     @Autowired
     private UserService userService;
@@ -27,34 +32,30 @@ public class UserController
         return "你好";
     }
 
-    // 跳转到添加用户页面
-    // @GetMapping("/user_add")
-    // public ModelAndView userAddPage(@ModelAttribute("msg") String msg)
-    // {
-    //     ModelAndView mv = new ModelAndView();
-    //
-    //     mv.addObject("msg", msg);
-    //     mv.setViewName("user_add");
-    //
-    //     return mv;
-    // }
-
     // 登录
     @PostMapping("/login")
-    public String login(User user, HttpSession session)
+    public Object login(@Validated @RequestBody User user)
     {
-        User loginUser = userService.login(user);
-        if (loginUser != null)
+        // System.out.println(user);
+        UserInfo userInfo = userService.login(user);
+
+        // 登录成功
+        if (userInfo != null)
         {
-            // 登录成功
-            session.setAttribute("user", loginUser);
-            return "loginSuccess";
+            JSONObject jsonObject = new JSONObject();
+            String token = JwtUtil.createToken(userInfo);
+
+            jsonObject.putOpt("userInfo", userInfo);
+            jsonObject.putOpt("token", token);
+
+            session.setAttribute("user", userInfo);
+            // System.out.println("sessionId=" + session.getId());
+
+            return jsonObject;
         }
-        else
-        {
-            // 失败
-            return "loginFailure";
-        }
+
+        // 失败
+        return null;
     }
 
     // 添加学生

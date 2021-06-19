@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public User login(User user)
+    public UserInfo login(User user)
     {
         List<User> userList = userMapper.selectByExample(null);
         String password = DigestUtil.md5Hex(user.getPassword());
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService
         {
             if (user.getUserid().equals(user1.getUserid()) && password.equals(user1.getPassword()))
             {
-                return user1;
+                return userInfoMapper.selectByPrimaryKey(user1.getUserid());
             }
         }
 
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService
     // @Transactional：事务，将下面的所有操作视为一个操作，所有操作成功才提交到数据库，不然就回滚
     @Override
     @Transactional
-    public boolean addAdministrator(UserInfo userInfo, User user)
+    public Boolean addAdministrator(UserInfo userInfo, User user)
     {
         int update1 = userInfoMapper.updateByPrimaryKeySelective(userInfo);
         int update2 = userMapper.updateByPrimaryKeySelective(user);
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService
 
     @Override
     @Transactional
-    public boolean addUsers(List<UserInfo> userInfoList, List<User> userList)
+    public Boolean addUsers(List<UserInfo> userInfoList, List<User> userList)
     {
         int insert1 = 0;
         int insert2 = 0;
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public boolean updatePassword(String originalPassword, User user)
+    public Boolean updatePassword(String originalPassword, User user)
     {
         String password = DigestUtil.md5Hex(originalPassword);
         User dbUser = userMapper.selectByPrimaryKey(user.getUserid());
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public boolean updateUserInfo(UserInfo userInfo)
+    public Boolean updateUserInfo(UserInfo userInfo)
     {
         int update = userInfoMapper.updateByPrimaryKeySelective(userInfo);
 
