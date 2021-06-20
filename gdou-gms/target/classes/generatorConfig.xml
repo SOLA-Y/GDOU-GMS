@@ -66,8 +66,8 @@
         <!--<table tableName = "user" domainObjectName="User"/>-->
         <!--<table tableName = "regulation" domainObjectName="Regulation"/>-->
         <!--<table tableName = "competition" domainObjectName="Competition"/>-->
-        <table tableName = "site" domainObjectName="Site"/>
-        <!--<table tableName = "site_order" domainObjectName="SiteOrder"/>-->
+        <!--<table tableName = "site" domainObjectName="Site"/>-->
+        <table tableName = "site_order" domainObjectName="SiteOrder"/>
         <!--<table tableName = "equipment" domainObjectName="Equipment"/>-->
         <!--<table tableName = "equ_order" domainObjectName="EquOrder"/>-->
 

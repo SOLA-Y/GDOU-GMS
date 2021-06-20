@@ -2,9 +2,9 @@ package com.gdou.gms.service.Impl;
 
 import com.gdou.gms.mapper.SiteMapper;
 import com.gdou.gms.mapper.SiteOrderMapper;
-import com.gdou.gms.pojo.Site;
-import com.gdou.gms.pojo.SiteOrder;
+import com.gdou.gms.pojo.*;
 import com.gdou.gms.service.SiteService;
+import com.gdou.gms.util.ExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,7 @@ public class SiteServiceImpl implements SiteService
     @Override
     public Boolean addSite(Site site)
     {
+        site.setState(0);
         int insert = siteMapper.insert(site);
         return insert == 1;
     }
@@ -29,6 +30,11 @@ public class SiteServiceImpl implements SiteService
     @Override
     public Boolean deleteSite(Integer siteId)
     {
+        SiteOrderExample example = new SiteOrderExample();
+        SiteOrderExample.Criteria criteria = example.createCriteria();
+        criteria.andSiteidEqualTo(siteId);
+        siteOrderMapper.deleteByExample(example);
+
         int delete = siteMapper.deleteByPrimaryKey(siteId);
         return delete == 1;
     }
@@ -46,6 +52,13 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
+    public List<Site> querySitesByCondition(Condition condition)
+    {
+        SiteExample example = ExampleUtil.createSiteExample(condition);
+        return siteMapper.selectByExample(example);
+    }
+
+    @Override
     public Boolean updateSite(Site site)
     {
         int update = siteMapper.updateByPrimaryKeySelective(site);
@@ -53,8 +66,9 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
-    public Boolean createSiteOrder(SiteOrder siteOrder)
+    public Boolean addSiteOrder(SiteOrder siteOrder)
     {
+        siteOrder.setStatus(0);
         int insert = siteOrderMapper.insert(siteOrder);
         return insert == 1;
     }
@@ -69,12 +83,39 @@ public class SiteServiceImpl implements SiteService
     @Override
     public SiteOrder querySiteOrder(Integer siteOrderId)
     {
-        return null;
+        return siteOrderMapper.selectOrderAndSiteAndUserById(siteOrderId);
     }
 
     @Override
     public List<SiteOrder> queryAllSiteOrders()
     {
-        return null;
+        return siteOrderMapper.selectAllOrdersAndSitesAndUsers();
+    }
+
+    @Override
+    public List<SiteOrder> querySiteOrdersByType(Integer typeId)
+    {
+        return siteOrderMapper.selectOrderAndSiteAndUserByType(typeId);
+    }
+
+    @Override
+    public List<SiteOrder> querySiteOrdersByStatus(Integer status)
+    {
+        return siteOrderMapper.selectOrderAndSiteAndUserByStatus(status);
+    }
+
+    @Override
+    public Boolean updateSiteOrder(Integer siteOrderId)
+    {
+        SiteOrder siteOrder = siteOrderMapper.selectByPrimaryKey(siteOrderId);
+        Site site = siteMapper.selectByPrimaryKey(siteOrder.getSiteid());
+
+        site.setState(1);
+        int update1 = siteMapper.updateByPrimaryKeySelective(site);
+
+        siteOrder.setStatus(1);
+        int update2 = siteOrderMapper.updateByPrimaryKey(siteOrder);
+
+        return update1 == update2 && update1 == 1;
     }
 }

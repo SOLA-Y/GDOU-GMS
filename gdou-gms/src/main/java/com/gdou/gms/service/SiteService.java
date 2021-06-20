@@ -1,5 +1,6 @@
 package com.gdou.gms.service;
 
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.Site;
 import com.gdou.gms.pojo.SiteOrder;
 
@@ -16,14 +17,22 @@ public interface SiteService
 
     public List<Site> queryAllSites();
 
+    public List<Site> querySitesByCondition(Condition condition);
+
     public Boolean updateSite(Site site);
 
-    public Boolean createSiteOrder(SiteOrder siteOrder);
+    public Boolean addSiteOrder(SiteOrder siteOrder);
 
     public Boolean deleteSiteOrder(Integer siteOrderId);
 
     public SiteOrder querySiteOrder(Integer siteOrderId);
 
     public List<SiteOrder> queryAllSiteOrders();
+
+    public List<SiteOrder> querySiteOrdersByType(Integer typeId);
+
+    public List<SiteOrder> querySiteOrdersByStatus(Integer status);
+
+    public Boolean updateSiteOrder(Integer siteOrderId);
 
 }

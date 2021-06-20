@@ -1,6 +1,7 @@
 package com.gdou.gms.pojo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class SiteOrder implements Serializable {
@@ -16,7 +17,7 @@ public class SiteOrder implements Serializable {
 
     private Date endTime;
 
-    private Integer feeid;
+    private BigDecimal price;
 
     private Integer status;
 
@@ -76,12 +77,12 @@ public class SiteOrder implements Serializable {
         this.endTime = endTime;
     }
 
-    public Integer getFeeid() {
-        return feeid;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setFeeid(Integer feeid) {
-        this.feeid = feeid;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Integer getStatus() {
@@ -132,7 +133,7 @@ public class SiteOrder implements Serializable {
         sb.append(", reason=").append(reason);
         sb.append(", startTime=").append(startTime);
         sb.append(", endTime=").append(endTime);
-        sb.append(", feeid=").append(feeid);
+        sb.append(", price=").append(price);
         sb.append(", status=").append(status);
         sb.append(", competid=").append(competid);
         sb.append(", site=").append(site);
@@ -141,4 +142,5 @@ public class SiteOrder implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
 }

@@ -2,11 +2,21 @@ package com.gdou.gms.pojo;
 
 public class Condition
 {
+    // 用户条件
     private String username;
 
     private String gender;
 
     private Integer roleid;
+
+    // 场地条件
+    private Integer state;
+
+
+
+    private Integer typeId;
+
+
 
     public Condition()
     {
@@ -17,6 +27,12 @@ public class Condition
         this.username = username;
         this.gender = gender;
         this.roleid = roleid;
+    }
+
+    public Condition(Integer state, Integer typeId)
+    {
+        this.state = state;
+        this.typeId = typeId;
     }
 
     public String getUsername()
@@ -47,5 +63,25 @@ public class Condition
     public void setRoleid(Integer roleid)
     {
         this.roleid = roleid;
+    }
+
+    public Integer getState()
+    {
+        return state;
+    }
+
+    public void setState(Integer state)
+    {
+        this.state = state;
+    }
+
+    public Integer getTypeId()
+    {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId)
+    {
+        this.typeId = typeId;
     }
 }

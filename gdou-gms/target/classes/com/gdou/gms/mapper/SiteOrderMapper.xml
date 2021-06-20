@@ -8,7 +8,7 @@
     <result column="reason" jdbcType="VARCHAR" property="reason" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="feeId" jdbcType="INTEGER" property="feeid" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="competId" jdbcType="VARCHAR" property="competid" />
   </resultMap>
@@ -20,15 +20,27 @@
     <result column="reason" jdbcType="VARCHAR" property="reason" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="feeId" jdbcType="INTEGER" property="feeid" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="competId" jdbcType="VARCHAR" property="competid" />
 
     <association property = "site" javaType = "com.gdou.gms.pojo.Site">
-      <id column = "userId" jdbcType = "INTEGER" property = "userid"/>
-      <result column = "userName" jdbcType = "VARCHAR" property = "username"/>
+      <id column="siteId" jdbcType="INTEGER" property="siteid" />
+      <result column="site_num" jdbcType="VARCHAR" property="siteNum" />
+      <result column="site_area" jdbcType="VARCHAR" property="siteArea" />
+      <result column="feeId" jdbcType="INTEGER" property="feeid" />
+      <result column="state" jdbcType="INTEGER" property="state" />
+      <result column="typeId" jdbcType="INTEGER" property="typeid" />
     </association>
 
+    <association property = "userInfo" javaType = "com.gdou.gms.pojo.UserInfo">
+      <id column="userId" jdbcType="CHAR" property="userid" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="gender" jdbcType="CHAR" property="gender" />
+      <result column="mail" jdbcType="VARCHAR" property="mail" />
+      <result column="phone" jdbcType="CHAR" property="phone" />
+      <result column="roleId" jdbcType="INTEGER" property="roleid" />
+    </association>
   </resultMap>
 
   <sql id="Example_Where_Clause">
@@ -90,11 +102,58 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    orderId, userId, siteId, reason, start_time, end_time, feeId, status, competId
+    orderId, userId, siteId, reason, start_time, end_time, price, status, competId
   </sql>
 
-  <select id="selectOrderAndSiteAndUserById" resultType="com.gdou.gms.pojo.SiteOrder">
+  <select id="selectAllOrdersAndSitesAndUsers" resultMap="OrderAndSiteAndUserMap">
+    select
+      site_order.*,
+      site.*,
+      userinfo.*
+    from
+      site_order, site, userinfo
+    where
+      site_order.siteId = site.siteId and
+      site_order.userId = userinfo.userId;
+  </select>
 
+  <select id="selectOrderAndSiteAndUserById" parameterType="java.lang.Integer" resultMap="OrderAndSiteAndUserMap">
+    select
+      site_order.*,
+      site.*,
+      userinfo.*
+    from
+      site_order, site, userinfo
+    where
+      site_order.siteId = site.siteId and
+      site_order.userId = userinfo.userId and
+      site_order.orderId = #{orderid,jdbcType=INTEGER};
+  </select>
+
+  <select id="selectOrderAndSiteAndUserByType" parameterType="java.lang.Integer" resultMap="OrderAndSiteAndUserMap">
+    select
+      site_order.*,
+      site.*,
+      userinfo.*
+    from
+      site_order, site, userinfo
+    where
+      site_order.siteId = site.siteId and
+      site_order.userId = userinfo.userId and
+      site.typeId = #{typeId,jdbcType=INTEGER};
+  </select>
+
+  <select id="selectOrderAndSiteAndUserByStatus" parameterType="java.lang.Integer" resultMap="OrderAndSiteAndUserMap">
+    select
+      site_order.*,
+      site.*,
+      userinfo.*
+    from
+      site_order, site, userinfo
+    where
+      site_order.siteId = site.siteId and
+      site_order.userId = userinfo.userId and
+      site_order.status = #{status,jdbcType=INTEGER};
   </select>
 
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.SiteOrderExample" resultMap="BaseResultMap">
@@ -130,11 +189,11 @@
   <insert id="insert" parameterType="com.gdou.gms.pojo.SiteOrder">
     insert into site_order (orderId, userId, siteId, 
       reason, start_time, end_time, 
-      feeId, status, competId
+      price, status, competId
       )
     values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=CHAR}, #{siteid,jdbcType=INTEGER}, 
       #{reason,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{feeid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{competid,jdbcType=VARCHAR}
+      #{price,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, #{competid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gdou.gms.pojo.SiteOrder">
@@ -158,8 +217,8 @@
       <if test="endTime != null">
         end_time,
       </if>
-      <if test="feeid != null">
-        feeId,
+      <if test="price != null">
+        price,
       </if>
       <if test="status != null">
         status,
@@ -187,8 +246,8 @@
       <if test="endTime != null">
         #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="feeid != null">
-        #{feeid,jdbcType=INTEGER},
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -225,8 +284,8 @@
       <if test="record.endTime != null">
         end_time = #{record.endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.feeid != null">
-        feeId = #{record.feeid,jdbcType=INTEGER},
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -247,7 +306,7 @@
       reason = #{record.reason,jdbcType=VARCHAR},
       start_time = #{record.startTime,jdbcType=TIMESTAMP},
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      feeId = #{record.feeid,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DECIMAL},
       status = #{record.status,jdbcType=INTEGER},
       competId = #{record.competid,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -272,8 +331,8 @@
       <if test="endTime != null">
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="feeid != null">
-        feeId = #{feeid,jdbcType=INTEGER},
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -291,7 +350,7 @@
       reason = #{reason,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
-      feeId = #{feeid,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
       status = #{status,jdbcType=INTEGER},
       competId = #{competid,jdbcType=VARCHAR}
     where orderId = #{orderid,jdbcType=INTEGER}

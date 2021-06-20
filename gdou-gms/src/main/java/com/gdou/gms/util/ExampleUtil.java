@@ -2,6 +2,7 @@ package com.gdou.gms.util;
 
 import cn.hutool.core.util.StrUtil;
 import com.gdou.gms.pojo.Condition;
+import com.gdou.gms.pojo.SiteExample;
 import com.gdou.gms.pojo.UserInfoExample;
 
 public class ExampleUtil
@@ -27,4 +28,23 @@ public class ExampleUtil
 
         return example;
     }
+
+    public static SiteExample createSiteExample(Condition condition)
+    {
+        SiteExample example = new SiteExample();
+        SiteExample.Criteria criteria = example.createCriteria();
+
+        if (condition.getState() != null)
+        {
+            criteria.andStateEqualTo(condition.getState());
+        }
+        if (condition.getTypeId() != null)
+        {
+            criteria.andTypeidEqualTo(condition.getTypeId());
+        }
+
+        return example;
+    }
+
+
 }
