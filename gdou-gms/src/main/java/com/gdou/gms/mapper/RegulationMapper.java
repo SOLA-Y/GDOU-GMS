@@ -22,6 +22,10 @@ public interface RegulationMapper {
 
     Regulation selectByPrimaryKey(Integer regulationid);
 
+    Regulation selectRegulationAndUserById(Integer regulationid);
+
+    List<Regulation> selectAllRegulationsAndUsers();
+
     int updateByExampleSelective(@Param("record") Regulation record, @Param("example") RegulationExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Regulation record, @Param("example") RegulationExample example);

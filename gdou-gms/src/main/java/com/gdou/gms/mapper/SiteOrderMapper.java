@@ -20,6 +20,8 @@ public interface SiteOrderMapper {
 
     SiteOrder selectByPrimaryKey(Integer orderid);
 
+    SiteOrder selectOrderAndSiteAndUserById(Integer orderid);
+
     int updateByExampleSelective(@Param("record") SiteOrder record, @Param("example") SiteOrderExample example);
 
     int updateByExample(@Param("record") SiteOrder record, @Param("example") SiteOrderExample example);

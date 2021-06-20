@@ -12,6 +12,25 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="competId" jdbcType="VARCHAR" property="competid" />
   </resultMap>
+
+  <resultMap id="OrderAndSiteAndUserMap" type="com.gdou.gms.pojo.SiteOrder">
+    <id column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="userId" jdbcType="CHAR" property="userid" />
+    <result column="siteId" jdbcType="INTEGER" property="siteid" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="feeId" jdbcType="INTEGER" property="feeid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="competId" jdbcType="VARCHAR" property="competid" />
+
+    <association property = "site" javaType = "com.gdou.gms.pojo.Site">
+      <id column = "userId" jdbcType = "INTEGER" property = "userid"/>
+      <result column = "userName" jdbcType = "VARCHAR" property = "username"/>
+    </association>
+
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -73,6 +92,11 @@
   <sql id="Base_Column_List">
     orderId, userId, siteId, reason, start_time, end_time, feeId, status, competId
   </sql>
+
+  <select id="selectOrderAndSiteAndUserById" resultType="com.gdou.gms.pojo.SiteOrder">
+
+  </select>
+
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.SiteOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

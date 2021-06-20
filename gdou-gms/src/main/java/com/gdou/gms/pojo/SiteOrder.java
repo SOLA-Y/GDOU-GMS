@@ -22,6 +22,10 @@ public class SiteOrder implements Serializable {
 
     private String competid;
 
+    private Site site;
+
+    private UserInfo userInfo;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getOrderid() {
@@ -96,6 +100,26 @@ public class SiteOrder implements Serializable {
         this.competid = competid;
     }
 
+    public Site getSite()
+    {
+        return site;
+    }
+
+    public void setSite(Site site)
+    {
+        this.site = site;
+    }
+
+    public UserInfo getUserInfo()
+    {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo)
+    {
+        this.userInfo = userInfo;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -111,6 +135,8 @@ public class SiteOrder implements Serializable {
         sb.append(", feeid=").append(feeid);
         sb.append(", status=").append(status);
         sb.append(", competid=").append(competid);
+        sb.append(", site=").append(site);
+        sb.append(", userInfo=").append(userInfo);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

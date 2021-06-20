@@ -1,16 +1,15 @@
 package com.gdou.gms.pojo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class Site implements Serializable {
     private Integer siteid;
 
-    private String siteName;
+    private String siteNum;
 
     private String siteArea;
 
-    private BigDecimal siteFee;
+    private Integer feeid;
 
     private Integer state;
 
@@ -26,12 +25,12 @@ public class Site implements Serializable {
         this.siteid = siteid;
     }
 
-    public String getSiteName() {
-        return siteName;
+    public String getSiteNum() {
+        return siteNum;
     }
 
-    public void setSiteName(String siteName) {
-        this.siteName = siteName;
+    public void setSiteNum(String siteNum) {
+        this.siteNum = siteNum;
     }
 
     public String getSiteArea() {
@@ -42,12 +41,12 @@ public class Site implements Serializable {
         this.siteArea = siteArea;
     }
 
-    public BigDecimal getSiteFee() {
-        return siteFee;
+    public Integer getFeeid() {
+        return feeid;
     }
 
-    public void setSiteFee(BigDecimal siteFee) {
-        this.siteFee = siteFee;
+    public void setFeeid(Integer feeid) {
+        this.feeid = feeid;
     }
 
     public Integer getState() {
@@ -73,9 +72,9 @@ public class Site implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", siteid=").append(siteid);
-        sb.append(", siteName=").append(siteName);
+        sb.append(", siteNum=").append(siteNum);
         sb.append(", siteArea=").append(siteArea);
-        sb.append(", siteFee=").append(siteFee);
+        sb.append(", feeid=").append(feeid);
         sb.append(", state=").append(state);
         sb.append(", typeid=").append(typeid);
         sb.append(", serialVersionUID=").append(serialVersionUID);

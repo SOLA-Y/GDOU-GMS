@@ -14,7 +14,22 @@ public class Regulation implements Serializable {
 
     private String content;
 
+    private String username;
+
     private static final long serialVersionUID = 1L;
+
+    public Regulation()
+    {
+    }
+
+    public Regulation(Integer regulationid, String adminid, String title, Date publishTime, String content)
+    {
+        this.regulationid = regulationid;
+        this.adminid = adminid;
+        this.title = title;
+        this.publishTime = publishTime;
+        this.content = content;
+    }
 
     public Integer getRegulationid() {
         return regulationid;
@@ -56,6 +71,16 @@ public class Regulation implements Serializable {
         this.content = content;
     }
 
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -67,6 +92,7 @@ public class Regulation implements Serializable {
         sb.append(", title=").append(title);
         sb.append(", publishTime=").append(publishTime);
         sb.append(", content=").append(content);
+        sb.append(", username=").append(username);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

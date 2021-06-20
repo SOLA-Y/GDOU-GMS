@@ -1,6 +1,5 @@
 package com.gdou.gms.pojo;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,73 +164,73 @@ public class SiteExample {
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameIsNull() {
-            addCriterion("site_name is null");
+        public Criteria andSiteNumIsNull() {
+            addCriterion("site_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameIsNotNull() {
-            addCriterion("site_name is not null");
+        public Criteria andSiteNumIsNotNull() {
+            addCriterion("site_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameEqualTo(String value) {
-            addCriterion("site_name =", value, "siteName");
+        public Criteria andSiteNumEqualTo(String value) {
+            addCriterion("site_num =", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameNotEqualTo(String value) {
-            addCriterion("site_name <>", value, "siteName");
+        public Criteria andSiteNumNotEqualTo(String value) {
+            addCriterion("site_num <>", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameGreaterThan(String value) {
-            addCriterion("site_name >", value, "siteName");
+        public Criteria andSiteNumGreaterThan(String value) {
+            addCriterion("site_num >", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameGreaterThanOrEqualTo(String value) {
-            addCriterion("site_name >=", value, "siteName");
+        public Criteria andSiteNumGreaterThanOrEqualTo(String value) {
+            addCriterion("site_num >=", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameLessThan(String value) {
-            addCriterion("site_name <", value, "siteName");
+        public Criteria andSiteNumLessThan(String value) {
+            addCriterion("site_num <", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameLessThanOrEqualTo(String value) {
-            addCriterion("site_name <=", value, "siteName");
+        public Criteria andSiteNumLessThanOrEqualTo(String value) {
+            addCriterion("site_num <=", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameLike(String value) {
-            addCriterion("site_name like", value, "siteName");
+        public Criteria andSiteNumLike(String value) {
+            addCriterion("site_num like", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameNotLike(String value) {
-            addCriterion("site_name not like", value, "siteName");
+        public Criteria andSiteNumNotLike(String value) {
+            addCriterion("site_num not like", value, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameIn(List<String> values) {
-            addCriterion("site_name in", values, "siteName");
+        public Criteria andSiteNumIn(List<String> values) {
+            addCriterion("site_num in", values, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameNotIn(List<String> values) {
-            addCriterion("site_name not in", values, "siteName");
+        public Criteria andSiteNumNotIn(List<String> values) {
+            addCriterion("site_num not in", values, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameBetween(String value1, String value2) {
-            addCriterion("site_name between", value1, value2, "siteName");
+        public Criteria andSiteNumBetween(String value1, String value2) {
+            addCriterion("site_num between", value1, value2, "siteNum");
             return (Criteria) this;
         }
 
-        public Criteria andSiteNameNotBetween(String value1, String value2) {
-            addCriterion("site_name not between", value1, value2, "siteName");
+        public Criteria andSiteNumNotBetween(String value1, String value2) {
+            addCriterion("site_num not between", value1, value2, "siteNum");
             return (Criteria) this;
         }
 
@@ -305,63 +304,63 @@ public class SiteExample {
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeIsNull() {
-            addCriterion("site_fee is null");
+        public Criteria andFeeidIsNull() {
+            addCriterion("feeId is null");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeIsNotNull() {
-            addCriterion("site_fee is not null");
+        public Criteria andFeeidIsNotNull() {
+            addCriterion("feeId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeEqualTo(BigDecimal value) {
-            addCriterion("site_fee =", value, "siteFee");
+        public Criteria andFeeidEqualTo(Integer value) {
+            addCriterion("feeId =", value, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeNotEqualTo(BigDecimal value) {
-            addCriterion("site_fee <>", value, "siteFee");
+        public Criteria andFeeidNotEqualTo(Integer value) {
+            addCriterion("feeId <>", value, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeGreaterThan(BigDecimal value) {
-            addCriterion("site_fee >", value, "siteFee");
+        public Criteria andFeeidGreaterThan(Integer value) {
+            addCriterion("feeId >", value, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("site_fee >=", value, "siteFee");
+        public Criteria andFeeidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("feeId >=", value, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeLessThan(BigDecimal value) {
-            addCriterion("site_fee <", value, "siteFee");
+        public Criteria andFeeidLessThan(Integer value) {
+            addCriterion("feeId <", value, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("site_fee <=", value, "siteFee");
+        public Criteria andFeeidLessThanOrEqualTo(Integer value) {
+            addCriterion("feeId <=", value, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeIn(List<BigDecimal> values) {
-            addCriterion("site_fee in", values, "siteFee");
+        public Criteria andFeeidIn(List<Integer> values) {
+            addCriterion("feeId in", values, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeNotIn(List<BigDecimal> values) {
-            addCriterion("site_fee not in", values, "siteFee");
+        public Criteria andFeeidNotIn(List<Integer> values) {
+            addCriterion("feeId not in", values, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("site_fee between", value1, value2, "siteFee");
+        public Criteria andFeeidBetween(Integer value1, Integer value2) {
+            addCriterion("feeId between", value1, value2, "feeid");
             return (Criteria) this;
         }
 
-        public Criteria andSiteFeeNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("site_fee not between", value1, value2, "siteFee");
+        public Criteria andFeeidNotBetween(Integer value1, Integer value2) {
+            addCriterion("feeId not between", value1, value2, "feeid");
             return (Criteria) this;
         }
 

@@ -62,14 +62,14 @@
             table：指定要逆向分析哪些表，根据表创建javaBean
               domainObjectName：指定生成的javaBean类的名称
         -->
-        <table tableName = "userinfo" domainObjectName="UserInfo"/>
-        <table tableName = "user" domainObjectName="User"/>
-        <table tableName = "regulation" domainObjectName="Regulation"/>
-        <table tableName = "competition" domainObjectName="Competition"/>
+        <!--<table tableName = "userinfo" domainObjectName="UserInfo"/>-->
+        <!--<table tableName = "user" domainObjectName="User"/>-->
+        <!--<table tableName = "regulation" domainObjectName="Regulation"/>-->
+        <!--<table tableName = "competition" domainObjectName="Competition"/>-->
         <table tableName = "site" domainObjectName="Site"/>
-        <table tableName = "site_order" domainObjectName="SiteOrder"/>
-        <table tableName = "equipment" domainObjectName="Equipment"/>
-        <table tableName = "equ_order" domainObjectName="EquOrder"/>
+        <!--<table tableName = "site_order" domainObjectName="SiteOrder"/>-->
+        <!--<table tableName = "equipment" domainObjectName="Equipment"/>-->
+        <!--<table tableName = "equ_order" domainObjectName="EquOrder"/>-->
 
         <!--生成全部表，tableName设为%
         <table tableName="%">

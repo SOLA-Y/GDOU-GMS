@@ -10,6 +10,9 @@
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gdou.gms.pojo.Regulation">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
+  <!--<resultMap id = "RegulationMap" type = "com.gdou.gms.pojo.Regulation">-->
+  <!--</resultMap>-->
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -84,11 +87,29 @@
     <include refid="Blob_Column_List" />
     from regulation
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
+      <include refid="Example_Where_Clause" />/
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+  </select>
+  <select id="selectRegulationAndUserById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+      regulation.*,
+      userinfo.username
+    from
+      regulation, userinfo
+    where
+      regulation.adminId = userinfo.userId and regulationId = #{regulationid,jdbcType=INTEGER};
+  </select>
+  <select id="selectAllRegulationsAndUsers" resultMap="ResultMapWithBLOBs">
+    select
+      regulation.*,
+      userinfo.username
+    from
+      regulation, userinfo
+    where
+      regulation.adminId = userinfo.userId
   </select>
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.RegulationExample" resultMap="BaseResultMap">
     select
