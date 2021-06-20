@@ -40,6 +40,7 @@ public class SiteController
         return siteService.queryAllSites();
     }
 
+    // 按照场地使用状态或类型查询场地
     @PostMapping("/querySitesByCondition")
     public List<Site> querySitesByCondition(@RequestBody Condition condition)
     {
@@ -58,7 +59,7 @@ public class SiteController
         return siteService.addSiteOrder(siteOrder);
     }
 
-    @PostMapping("/deleteSiteOrder")
+    @GetMapping("/deleteSiteOrder")
     public Boolean deleteSiteOrder(@RequestParam("siteOrderId") Integer siteOrderId)
     {
         return siteService.deleteSiteOrder(siteOrderId);
@@ -92,7 +93,14 @@ public class SiteController
     @GetMapping("/verifiedSiteOrder")
     public Boolean verifiedSiteOrder(@RequestParam("siteOrderId") Integer siteOrderId)
     {
-        return siteService.updateSiteOrder(siteOrderId);
+        return siteService.verifiedSiteOrder(siteOrderId);
+    }
+
+    // 场地归还
+    @GetMapping("/returnSite")
+    public Boolean returnSite(@RequestParam("siteId") Integer siteId)
+    {
+        return siteService.returnSite(siteId);
     }
 
 }

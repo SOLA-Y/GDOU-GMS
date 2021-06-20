@@ -13,6 +13,43 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="competId" jdbcType="VARCHAR" property="competid" />
   </resultMap>
+
+  <resultMap id="OrderAndEquAndUserMap" type="com.gdou.gms.pojo.EquOrder">
+    <id column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="equId" jdbcType="INTEGER" property="equid" />
+    <result column="userId" jdbcType="CHAR" property="userid" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="competId" jdbcType="VARCHAR" property="competid" />
+
+    <association property = "equipment" javaType = "com.gdou.gms.pojo.Equipment">
+      <id column="equId" jdbcType="INTEGER" property="equid" />
+      <result column="equ_name" jdbcType="VARCHAR" property="equName" />
+      <result column="equ_fee" jdbcType="DECIMAL" property="equFee" />
+      <result column="total_cost" jdbcType="DECIMAL" property="totalCost" />
+      <result column="quantity" jdbcType="INTEGER" property="quantity" />
+      <result column="left" jdbcType="INTEGER" property="left" />
+      <result column="buy_date" jdbcType="DATE" property="buyDate" />
+      <result column="adminId" jdbcType="CHAR" property="adminid" />
+      <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    </association>
+
+    <association property = "userInfo" javaType = "com.gdou.gms.pojo.UserInfo">
+      <id column="userId" jdbcType="CHAR" property="userid" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="gender" jdbcType="CHAR" property="gender" />
+      <result column="mail" jdbcType="VARCHAR" property="mail" />
+      <result column="phone" jdbcType="CHAR" property="phone" />
+      <result column="roleId" jdbcType="INTEGER" property="roleid" />
+    </association>
+
+  </resultMap>
+
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -74,6 +111,58 @@
   <sql id="Base_Column_List">
     orderId, equId, userId, reason, num, start_time, end_time, price, status, competId
   </sql>
+
+  <select id="selectOrderAndEquAndUserById" parameterType="java.lang.Integer" resultMap="OrderAndEquAndUserMap">
+    select
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      equ_order, equipment, userinfo
+    where
+      equ_order.equId = equipment.equId and
+      equ_order.userId = userinfo.userId and
+      equ_order.orderId = #{orderid,jdbcType=INTEGER};
+  </select>
+
+  <select id="selectAllOrdersAndEqusAndUsers" resultMap="OrderAndEquAndUserMap">
+    select
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      equ_order, equipment, userinfo
+    where
+      equ_order.equId = equipment.equId and
+      equ_order.userId = userinfo.userId
+  </select>
+
+  <select id="selectOrderAndEquAndUserByType" parameterType="java.lang.Integer" resultMap="OrderAndEquAndUserMap">
+    select
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      equ_order, equipment, userinfo
+    where
+      equ_order.equId = equipment.equId and
+      equ_order.userId = userinfo.userId and
+      equipment.typeId = #{typeId,jdbcType=INTEGER};
+  </select>
+
+  <select id="selectOrderAndEquAndUserByStatus" parameterType="java.lang.Integer" resultMap="OrderAndEquAndUserMap">
+    select
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      equ_order, equipment, userinfo
+    where
+      equ_order.equId = equipment.equId and
+      equ_order.userId = userinfo.userId and
+      equ_order.status = #{status,jdbcType=INTEGER};
+  </select>
+
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.EquOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

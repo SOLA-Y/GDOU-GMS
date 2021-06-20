@@ -15,8 +15,6 @@ a
 1src/main/java/com/gdou/gms/mapper/UserMapper.java,1\5\152da4d31b7c519bf028543bf5bc6590238d1952
 ]
 -src/main/java/com/gdou/gms/pojo/UserInfo.java,3\5\35830b0738229d6266e07a015672de889899ebde
-]
--src/main/java/com/gdou/gms/pojo/EquOrder.java,a\e\aeef4afea314fb1f6b4d957d51d576c04e9ed83c
 g
 7src/test/java/com/gdou/gms/service/UserServiceTest.java,3\c\3c5401cbd5a413724f2674b913d19dd8958b2048
 <

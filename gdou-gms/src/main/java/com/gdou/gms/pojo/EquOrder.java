@@ -25,6 +25,10 @@ public class EquOrder implements Serializable {
 
     private String competid;
 
+    private Equipment equipment;
+
+    private UserInfo userInfo;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getOrderid() {
@@ -107,6 +111,26 @@ public class EquOrder implements Serializable {
         this.competid = competid;
     }
 
+    public Equipment getEquipment()
+    {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment)
+    {
+        this.equipment = equipment;
+    }
+
+    public UserInfo getUserInfo()
+    {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo)
+    {
+        this.userInfo = userInfo;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -123,6 +147,8 @@ public class EquOrder implements Serializable {
         sb.append(", price=").append(price);
         sb.append(", status=").append(status);
         sb.append(", competid=").append(competid);
+        sb.append(", equipment=").append(equipment);
+        sb.append(", userInfo=").append(userInfo);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

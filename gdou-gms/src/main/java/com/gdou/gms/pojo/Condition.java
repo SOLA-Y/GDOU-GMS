@@ -12,28 +12,30 @@ public class Condition
     // 场地条件
     private Integer state;
 
+    // 器材条件
+    private Integer left;
 
-
+    // 场地条件、器材条件、赛事条件
     private Integer typeId;
 
 
+    // public Condition()
+    // {
+    // }
+    //
+    // public Condition(String username, String gender, Integer roleid)
+    // {
+    //     this.username = username;
+    //     this.gender = gender;
+    //     this.roleid = roleid;
+    // }
+    //
+    // public Condition(Integer state, Integer typeId)
+    // {
+    //     this.state = state;
+    //     this.typeId = typeId;
+    // }
 
-    public Condition()
-    {
-    }
-
-    public Condition(String username, String gender, Integer roleid)
-    {
-        this.username = username;
-        this.gender = gender;
-        this.roleid = roleid;
-    }
-
-    public Condition(Integer state, Integer typeId)
-    {
-        this.state = state;
-        this.typeId = typeId;
-    }
 
     public String getUsername()
     {
@@ -73,6 +75,16 @@ public class Condition
     public void setState(Integer state)
     {
         this.state = state;
+    }
+
+    public Integer getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Integer left)
+    {
+        this.left = left;
     }
 
     public Integer getTypeId()

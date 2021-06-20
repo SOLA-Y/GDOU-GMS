@@ -23,4 +23,10 @@ class SiteServiceTest
     {
         System.out.println(siteService.queryAllSiteOrders());
     }
+
+    @Test
+    void querySiteOrdersByStatus()
+    {
+        System.out.println(siteService.querySiteOrdersByStatus(1));
+    }
 }

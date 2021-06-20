@@ -21,6 +21,8 @@ public interface SiteService
 
     public Boolean updateSite(Site site);
 
+    public Boolean returnSite(Integer siteId);
+
     public Boolean addSiteOrder(SiteOrder siteOrder);
 
     public Boolean deleteSiteOrder(Integer siteOrderId);
@@ -33,6 +35,6 @@ public interface SiteService
 
     public List<SiteOrder> querySiteOrdersByStatus(Integer status);
 
-    public Boolean updateSiteOrder(Integer siteOrderId);
+    public Boolean verifiedSiteOrder(Integer siteOrderId);
 
 }

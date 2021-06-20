@@ -66,6 +66,16 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
+    public Boolean returnSite(Integer siteId)
+    {
+        Site site = new Site();
+        site.setSiteid(siteId);
+        site.setState(0);
+
+        return updateSite(site);
+    }
+
+    @Override
     public Boolean addSiteOrder(SiteOrder siteOrder)
     {
         siteOrder.setStatus(0);
@@ -105,7 +115,7 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
-    public Boolean updateSiteOrder(Integer siteOrderId)
+    public Boolean verifiedSiteOrder(Integer siteOrderId)
     {
         SiteOrder siteOrder = siteOrderMapper.selectByPrimaryKey(siteOrderId);
         Site site = siteMapper.selectByPrimaryKey(siteOrder.getSiteid());
@@ -118,4 +128,5 @@ public class SiteServiceImpl implements SiteService
 
         return update1 == update2 && update1 == 1;
     }
+
 }

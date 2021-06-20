@@ -20,6 +20,14 @@ public interface EquOrderMapper {
 
     EquOrder selectByPrimaryKey(Integer orderid);
 
+    List<EquOrder> selectAllOrdersAndEqusAndUsers();
+
+    EquOrder selectOrderAndEquAndUserById(Integer orderid);
+
+    List<EquOrder> selectOrderAndEquAndUserByType(Integer typeId);
+
+    List<EquOrder> selectOrderAndEquAndUserByStatus(Integer status);
+
     int updateByExampleSelective(@Param("record") EquOrder record, @Param("example") EquOrderExample example);
 
     int updateByExample(@Param("record") EquOrder record, @Param("example") EquOrderExample example);
