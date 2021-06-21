@@ -9,10 +9,10 @@ public class Condition
 
     private Integer roleid;
 
-    // 场地条件
+    // 场地使用状态
     private Integer state;
 
-    // 器材条件
+    // 器材余量
     private Integer left;
 
     // 场地条件、器材条件、赛事条件

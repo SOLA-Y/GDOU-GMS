@@ -66,10 +66,11 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
-    public Boolean returnSite(Integer siteId)
+    public Boolean returnSite(Integer siteOrderId)
     {
-        Site site = new Site();
-        site.setSiteid(siteId);
+        SiteOrder siteOrder = siteOrderMapper.selectByPrimaryKey(siteOrderId);
+        Site site = siteMapper.selectByPrimaryKey(siteOrder.getSiteid());
+
         site.setState(0);
 
         return updateSite(site);
@@ -88,6 +89,30 @@ public class SiteServiceImpl implements SiteService
     {
         int delete = siteOrderMapper.deleteByPrimaryKey(siteOrderId);
         return delete == 1;
+    }
+
+    @Override
+    public Boolean deleteSiteOrderByCompetId(String competitionId)
+    {
+        SiteOrderExample example = new SiteOrderExample();
+        SiteOrderExample.Criteria criteria = example.createCriteria();
+        criteria.andCompetidEqualTo(competitionId);
+
+        int delete = siteOrderMapper.deleteByExample(example);
+
+        return delete == 1;
+    }
+
+    @Override
+    public SiteOrder querySiteOrderByCompetId(String competitionId)
+    {
+        SiteOrderExample example = new SiteOrderExample();
+        SiteOrderExample.Criteria criteria = example.createCriteria();
+        criteria.andCompetidEqualTo(competitionId);
+
+        List<SiteOrder> siteOrderList = siteOrderMapper.selectByExample(example);
+
+        return siteOrderList.get(0);
     }
 
     @Override

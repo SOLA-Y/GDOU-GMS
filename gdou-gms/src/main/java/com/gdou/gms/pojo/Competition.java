@@ -26,6 +26,16 @@ public class Competition implements Serializable {
 
     private Integer eorderId;
 
+    private SiteOrder siteOrder;
+
+    private Site site;
+
+    private EquOrder equOrder;
+
+    private Equipment equipment;
+
+    private UserInfo userInfo;
+
     private static final long serialVersionUID = 1L;
 
     public String getCompetid() {
@@ -116,6 +126,56 @@ public class Competition implements Serializable {
         this.eorderId = eorderId;
     }
 
+    public SiteOrder getSiteOrder()
+    {
+        return siteOrder;
+    }
+
+    public void setSiteOrder(SiteOrder siteOrder)
+    {
+        this.siteOrder = siteOrder;
+    }
+
+    public Site getSite()
+    {
+        return site;
+    }
+
+    public void setSite(Site site)
+    {
+        this.site = site;
+    }
+
+    public EquOrder getEquOrder()
+    {
+        return equOrder;
+    }
+
+    public void setEquOrder(EquOrder equOrder)
+    {
+        this.equOrder = equOrder;
+    }
+
+    public Equipment getEquipment()
+    {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment)
+    {
+        this.equipment = equipment;
+    }
+
+    public UserInfo getUserInfo()
+    {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo)
+    {
+        this.userInfo = userInfo;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -133,6 +193,11 @@ public class Competition implements Serializable {
         sb.append(", equid=").append(equid);
         sb.append(", sorderId=").append(sorderId);
         sb.append(", eorderId=").append(eorderId);
+        sb.append(", siteOrder=").append(siteOrder);
+        sb.append(", site=").append(site);
+        sb.append(", equOrder=").append(equOrder);
+        sb.append(", equipment=").append(equipment);
+        sb.append(", userInfo=").append(userInfo);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

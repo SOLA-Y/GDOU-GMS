@@ -21,7 +21,6 @@ public class WebConfig implements WebMvcConfigurer
     public void addInterceptors(InterceptorRegistry registry)
     {
         List<String> excludePaths = new ArrayList<>();
-        excludePaths.add("/");
         excludePaths.add("/getMsg");
         excludePaths.add("/login");
         excludePaths.add("/checkToken");

@@ -17,7 +17,7 @@ public interface EquipmentService
 
     public List<Equipment> queryAllEquipments();
 
-    public List<Equipment> queryEqusByCondition(Condition condition);
+    public List<Equipment> queryEquipmentsByCondition(Condition condition);
 
     public Boolean updateEquipment(Equipment equipment);
 
@@ -26,6 +26,10 @@ public interface EquipmentService
     public Boolean addEquOrder(EquOrder equOrder);
 
     public Boolean deleteEquOrder(Integer equOrderId);
+
+    public Boolean deleteEquOrderByCompetId(String competitionId);
+
+    public EquOrder queryEquOrderByCompetId(String competitionId);
 
     public EquOrder queryEquOrder(Integer equOrderId);
 

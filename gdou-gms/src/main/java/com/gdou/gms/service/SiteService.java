@@ -21,11 +21,15 @@ public interface SiteService
 
     public Boolean updateSite(Site site);
 
-    public Boolean returnSite(Integer siteId);
+    public Boolean returnSite(Integer siteOrderId);
 
     public Boolean addSiteOrder(SiteOrder siteOrder);
 
     public Boolean deleteSiteOrder(Integer siteOrderId);
+
+    public Boolean deleteSiteOrderByCompetId(String competitionId);
+
+    public SiteOrder querySiteOrderByCompetId(String competitionId);
 
     public SiteOrder querySiteOrder(Integer siteOrderId);
 

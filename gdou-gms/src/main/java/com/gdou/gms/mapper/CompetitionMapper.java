@@ -20,6 +20,14 @@ public interface CompetitionMapper {
 
     Competition selectByPrimaryKey(String competid);
 
+    List<Competition> selectAllCompetitions();
+
+    Competition selectCompetitionById(String competid);
+
+    List<Competition> selectCompetitionsByType(Integer typeId);
+
+    List<Competition> selectCompetitionsByStatus(Integer status);
+
     int updateByExampleSelective(@Param("record") Competition record, @Param("example") CompetitionExample example);
 
     int updateByExample(@Param("record") Competition record, @Param("example") CompetitionExample example);

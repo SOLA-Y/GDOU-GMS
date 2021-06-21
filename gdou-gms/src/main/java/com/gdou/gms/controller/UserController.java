@@ -7,6 +7,8 @@ import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.service.UserService;
 import com.gdou.gms.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +20,6 @@ import java.util.List;
 @RestController
 public class UserController
 {
-    @Autowired
-    private HttpSession session;
 
     @Autowired
     private UserService userService;
@@ -39,28 +39,47 @@ public class UserController
 
     // 登录
     @PostMapping("/login")
-    public Object login(@Validated @RequestBody User user)
+    public Object login(@Validated @RequestBody User user, BindingResult bindingResult)
     {
+        JSONObject jsonObject = new JSONObject();
+
         // System.out.println(user);
+        // 判断校验是否通过，如果不通过会有错误消息
+        if (bindingResult.hasErrors())
+        {
+            // 获取所有错误消息
+            List<FieldError> errors = bindingResult.getFieldErrors();
+
+            for (FieldError error : errors)
+            {
+                System.out.println(error.getField() + "：" + error.getDefaultMessage());
+
+                jsonObject.putOpt(error.getField(), error.getDefaultMessage());
+            }
+
+            return jsonObject;
+        }
+
         UserInfo userInfo = userService.login(user);
 
         // 登录成功
         if (userInfo != null)
         {
-            JSONObject jsonObject = new JSONObject();
             String token = JwtUtil.createToken(userInfo);
 
             jsonObject.putOpt("userInfo", userInfo);
             jsonObject.putOpt("token", token);
 
-            session.setAttribute("user", userInfo);
+            // session.setAttribute("user", userInfo);
             // System.out.println("sessionId=" + session.getId());
-
-            return jsonObject;
+        }
+        else
+        {
+            // 登录失败
+            jsonObject.putOpt("loginMessage", "账号或密码错误");
         }
 
-        // 失败
-        return null;
+        return jsonObject;
     }
 
     // 添加普通用户

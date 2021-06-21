@@ -7,7 +7,6 @@ import cn.hutool.crypto.digest.Digester;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.pojo.UserInfoExample;
-import com.gdou.gms.util.Encrypt;
 import com.gdou.gms.util.JwtUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,6 @@ class UserInfoMapperTest
     @Test
     void testEncryptMD5()
     {
-        System.out.println(Encrypt.encryptMD5("1234567890") + "，长度=" + Encrypt.encryptMD5("1234567890").length());
 
         System.out.println(DigestUtil.md5Hex("1234567890") + "，长度=" + DigestUtil.md5Hex("1234567890").length());
 
@@ -48,7 +46,7 @@ class UserInfoMapperTest
 
         System.out.println(token);
 
-        jwtUtil.parse(token);
+        jwtUtil.parseToken(token);
 
         System.out.println(StrUtil.isNotBlank(""));
         System.out.println(StrUtil.isNotBlank(null));
@@ -107,7 +105,7 @@ class UserInfoMapperTest
     @Test
     void testInsert()
     {
-        String password1 = Encrypt.encryptMD5("0123456789");
+        String password1 = DigestUtil.md5Hex("0123456789");
         // int i1 = userInfoMapper.insert(new UserInfo("201811701308", password1, "志宏", "男", "1234567@qq.com", "14770697894", 3));
         // System.out.println("影响行数：" + i1);
         //

@@ -15,6 +15,76 @@
     <result column="eorder_id" jdbcType="INTEGER" property="eorderId" />
   </resultMap>
 
+  <resultMap id="CompetitionMap" type="com.gdou.gms.pojo.Competition">
+    <id column="competId" jdbcType="VARCHAR" property="competid" />
+    <result column="compet_name" jdbcType="VARCHAR" property="competName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    <result column="userId" jdbcType="CHAR" property="userid" />
+    <result column="siteId" jdbcType="INTEGER" property="siteid" />
+    <result column="equId" jdbcType="INTEGER" property="equid" />
+    <result column="sorder_id" jdbcType="INTEGER" property="sorderId" />
+    <result column="eorder_id" jdbcType="INTEGER" property="eorderId" />
+
+    <association property = "siteOrder" javaType = "com.gdou.gms.pojo.SiteOrder">
+      <id column="orderId" jdbcType="INTEGER" property="orderid" />
+      <result column="userId" jdbcType="CHAR" property="userid" />
+      <result column="siteId" jdbcType="INTEGER" property="siteid" />
+      <result column="reason" jdbcType="VARCHAR" property="reason" />
+      <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+      <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+      <result column="competId" jdbcType="VARCHAR" property="competid" />
+    </association>
+
+    <association property = "site" javaType = "com.gdou.gms.pojo.Site">
+      <id column="siteId" jdbcType="INTEGER" property="siteid" />
+      <result column="site_num" jdbcType="VARCHAR" property="siteNum" />
+      <result column="site_area" jdbcType="VARCHAR" property="siteArea" />
+      <result column="feeId" jdbcType="INTEGER" property="feeid" />
+      <result column="state" jdbcType="INTEGER" property="state" />
+      <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    </association>
+
+    <association property = "equOrder" javaType = "com.gdou.gms.pojo.EquOrder">
+      <id column="orderId" jdbcType="INTEGER" property="orderid" />
+      <result column="equId" jdbcType="INTEGER" property="equid" />
+      <result column="userId" jdbcType="CHAR" property="userid" />
+      <result column="reason" jdbcType="VARCHAR" property="reason" />
+      <result column="num" jdbcType="INTEGER" property="num" />
+      <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+      <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+      <result column="competId" jdbcType="VARCHAR" property="competid" />
+    </association>
+
+    <association property = "equipment" javaType = "com.gdou.gms.pojo.Equipment">
+      <id column="equId" jdbcType="INTEGER" property="equid" />
+      <result column="equ_name" jdbcType="VARCHAR" property="equName" />
+      <result column="equ_fee" jdbcType="DECIMAL" property="equFee" />
+      <result column="total_cost" jdbcType="DECIMAL" property="totalCost" />
+      <result column="quantity" jdbcType="INTEGER" property="quantity" />
+      <result column="left" jdbcType="INTEGER" property="left" />
+      <result column="buy_date" jdbcType="DATE" property="buyDate" />
+      <result column="adminId" jdbcType="CHAR" property="adminid" />
+      <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    </association>
+
+    <association property = "userInfo" javaType = "com.gdou.gms.pojo.UserInfo">
+      <id column="userId" jdbcType="CHAR" property="userid" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="gender" jdbcType="CHAR" property="gender" />
+      <result column="mail" jdbcType="VARCHAR" property="mail" />
+      <result column="phone" jdbcType="CHAR" property="phone" />
+      <result column="roleId" jdbcType="INTEGER" property="roleid" />
+    </association>
+
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -79,6 +149,86 @@
     competId, compet_name, start_time, end_time, description, typeId, userId, siteId, 
     equId, sorder_id, eorder_id
   </sql>
+
+  <select id="selectCompetitionById" parameterType="java.lang.String" resultMap="CompetitionMap">
+    select
+      competition.*,
+      site_order.*,
+      site.*,
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      competition, site_order, site, equ_order, equipment, userinfo
+    where
+      competition.sorder_id = site_order.orderId and
+      competition.siteId = site.siteId and
+      competition.eorder_id = equ_order.orderId and
+      competition.equId = equipment.equId and
+      competition.userId = userinfo.userId and
+      competition.competId = #{competid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAllCompetitions" resultMap="CompetitionMap">
+    select
+      competition.*,
+      site_order.*,
+      site.*,
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      competition, site_order, site, equ_order, equipment, userinfo
+    where
+      competition.sorder_id = site_order.orderId and
+      competition.siteId = site.siteId and
+      competition.eorder_id = equ_order.orderId and
+      competition.equId = equipment.equId and
+      competition.userId = userinfo.userId
+  </select>
+
+  <select id="selectCompetitionsByType" parameterType="java.lang.Integer" resultMap="CompetitionMap">
+    select
+      competition.*,
+      site_order.*,
+      site.*,
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      competition, site_order, site, equ_order, equipment, userinfo
+    where
+      competition.sorder_id = site_order.orderId and
+      competition.siteId = site.siteId and
+      competition.eorder_id = equ_order.orderId and
+      competition.equId = equipment.equId and
+      competition.userId = userinfo.userId and
+      competition.typeId = #{typeId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectCompetitionsByStatus" parameterType="java.lang.Integer" resultMap="CompetitionMap">
+    select
+      competition.*,
+      site_order.*,
+      site.*,
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      competition, site_order, site, equ_order,  equipment, userinfo
+    where
+      competition.sorder_id = site_order.orderId and
+      competition.siteId = site.siteId and
+      competition.eorder_id = equ_order.orderId and
+      competition.equId = equipment.equId and
+      competition.userId = userinfo.userId and
+      <if test="status == 0">
+        not (site_order.status = #{status,jdbcType=INTEGER} and equ_order.status = #{status,jdbcType=INTEGER})
+      </if>
+      <if test="status == 1">
+        site_order.status = #{status,jdbcType=INTEGER} and equ_order.status = #{status,jdbcType=INTEGER}
+      </if>
+  </select>
 
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.CompetitionExample" resultMap="BaseResultMap">
     select

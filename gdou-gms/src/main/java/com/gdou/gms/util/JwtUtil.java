@@ -36,7 +36,7 @@ public class JwtUtil
     }
 
     // 解析token
-    public void parse(String token)
+    public void parseToken(String token)
     {
         JwtParser jwtParser = Jwts.parser();
         // 解析成很多个claim

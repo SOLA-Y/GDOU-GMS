@@ -2,10 +2,7 @@ package com.gdou.gms.service.Impl;
 
 import com.gdou.gms.mapper.EquOrderMapper;
 import com.gdou.gms.mapper.EquipmentMapper;
-import com.gdou.gms.pojo.Condition;
-import com.gdou.gms.pojo.EquOrder;
-import com.gdou.gms.pojo.Equipment;
-import com.gdou.gms.pojo.EquipmentExample;
+import com.gdou.gms.pojo.*;
 import com.gdou.gms.service.EquipmentService;
 import com.gdou.gms.util.ExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +46,9 @@ public class EquipmentServiceImpl implements EquipmentService
     }
 
     @Override
-    public List<Equipment> queryEqusByCondition(Condition condition)
+    public List<Equipment> queryEquipmentsByCondition(Condition condition)
     {
-        EquipmentExample example = ExampleUtil.createEquExample(condition);
+        EquipmentExample example = ExampleUtil.createEquipmentExample(condition);
         return equipmentMapper.selectByExample(example);
     }
 
@@ -86,6 +83,30 @@ public class EquipmentServiceImpl implements EquipmentService
     {
         int delete = equOrderMapper.deleteByPrimaryKey(equOrderId);
         return delete == 1;
+    }
+
+    @Override
+    public Boolean deleteEquOrderByCompetId(String competitionId)
+    {
+        EquOrderExample example = new EquOrderExample();
+        EquOrderExample.Criteria criteria = example.createCriteria();
+        criteria.andCompetidEqualTo(competitionId);
+
+        int delete = equOrderMapper.deleteByExample(example);
+
+        return delete == 1;
+    }
+
+    @Override
+    public EquOrder queryEquOrderByCompetId(String competitionId)
+    {
+        EquOrderExample example = new EquOrderExample();
+        EquOrderExample.Criteria criteria = example.createCriteria();
+        criteria.andCompetidEqualTo(competitionId);
+
+        List<EquOrder> equOrderList = equOrderMapper.selectByExample(example);
+
+        return equOrderList.get(0);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.gdou.gms.service;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
-import com.gdou.gms.util.Encrypt;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ class UserServiceTest
     @Test
     void updateUser()
     {
-        String password = Encrypt.encryptMD5("1234567890");
+        String password = DigestUtil.md5Hex("1234567890");
 
         UserInfo userInfo = new UserInfo();
         userInfo.setUserid("201811701307");

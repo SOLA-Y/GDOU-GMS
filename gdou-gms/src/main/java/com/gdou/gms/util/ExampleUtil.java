@@ -47,7 +47,7 @@ public class ExampleUtil
         return example;
     }
 
-    public static EquipmentExample createEquExample(Condition condition)
+    public static EquipmentExample createEquipmentExample(Condition condition)
     {
         EquipmentExample example = new EquipmentExample();
         EquipmentExample.Criteria criteria = example.createCriteria();
@@ -63,8 +63,5 @@ public class ExampleUtil
 
         return example;
     }
-
-
-
 
 }

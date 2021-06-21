@@ -43,7 +43,7 @@ public class EquipmentController
     @PostMapping("/queryEqusByCondition")
     public List<Equipment> queryEqusByCondition(@RequestBody Condition condition)
     {
-        return equipmentService.queryEqusByCondition(condition);
+        return equipmentService.queryEquipmentsByCondition(condition);
     }
 
     @PostMapping("/updateEquipment")
@@ -70,7 +70,7 @@ public class EquipmentController
         return equipmentService.queryEquOrder(equOrderId);
     }
 
-    @GetMapping("/queryAllSiteOrders")
+    @GetMapping("/queryAllEquOrders")
     public List<EquOrder> queryAllEquOrders()
     {
         return equipmentService.queryAllEquOrders();
@@ -89,7 +89,7 @@ public class EquipmentController
     }
 
     // 场地预约审核通过
-    @GetMapping("/verifiedSiteOrder")
+    @GetMapping("/verifiedEquOrder")
     public Boolean verifiedEquOrder(@RequestParam("equOrderId") Integer equOrderId)
     {
         return equipmentService.verifiedEquOrder(equOrderId);
