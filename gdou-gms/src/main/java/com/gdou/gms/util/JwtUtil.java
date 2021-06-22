@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class JwtUtil
 {
-    // 有效时间是一天
-    private static long time = 1000 * 60 * 60 * 24;
+    // 有效时间是一天1000 * 60 * 60 * 24
+    private static long time = 1000 * 5;
     // 签名信息，通过这个进行加密或解密
     private static String signature = "gdou-gms";
 

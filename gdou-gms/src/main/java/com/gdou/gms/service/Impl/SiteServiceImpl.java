@@ -7,6 +7,7 @@ import com.gdou.gms.service.SiteService;
 import com.gdou.gms.util.ExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class SiteServiceImpl implements SiteService
         return insert == 1;
     }
 
+    @Transactional
     @Override
     public Boolean deleteSite(Integer siteId)
     {
@@ -65,6 +67,7 @@ public class SiteServiceImpl implements SiteService
         return update == 1;
     }
 
+    @Transactional
     @Override
     public Boolean returnSite(Integer siteOrderId)
     {
@@ -72,8 +75,12 @@ public class SiteServiceImpl implements SiteService
         Site site = siteMapper.selectByPrimaryKey(siteOrder.getSiteid());
 
         site.setState(0);
+        Boolean update1 = updateSite(site);
 
-        return updateSite(site);
+        siteOrder.setStatus(3);
+        int update2 = siteOrderMapper.updateByPrimaryKey(siteOrder);
+
+        return update1 && update2 == 1;
     }
 
     @Override
@@ -139,6 +146,7 @@ public class SiteServiceImpl implements SiteService
         return siteOrderMapper.selectOrderAndSiteAndUserByStatus(status);
     }
 
+    @Transactional
     @Override
     public Boolean verifiedSiteOrder(Integer siteOrderId)
     {

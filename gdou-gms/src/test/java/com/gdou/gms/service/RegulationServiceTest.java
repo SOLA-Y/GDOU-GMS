@@ -17,6 +17,9 @@ class RegulationServiceTest
     @Autowired
     private RegulationMapper regulationMapper;
 
+    @Autowired
+    private RegulationService regulationService;
+
     @Test
     void createRegulation()
     {
@@ -33,7 +36,7 @@ class RegulationServiceTest
     @Test
     void queryAllRegulations()
     {
-        System.out.println(regulationMapper.selectAllRegulationsAndUsers());
+        System.out.println(regulationService.queryAllRegulations());
     }
 
 }

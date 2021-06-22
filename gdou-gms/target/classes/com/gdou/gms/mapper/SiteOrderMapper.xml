@@ -114,7 +114,8 @@
       site_order, site, userinfo
     where
       site_order.siteId = site.siteId and
-      site_order.userId = userinfo.userId;
+      site_order.userId = userinfo.userId and
+	  site_order.competId is null;
   </select>
 
   <select id="selectOrderAndSiteAndUserById" parameterType="java.lang.Integer" resultMap="OrderAndSiteAndUserMap">
@@ -140,6 +141,7 @@
     where
       site_order.siteId = site.siteId and
       site_order.userId = userinfo.userId and
+	  site_order.competId is null and
       site.typeId = #{typeId,jdbcType=INTEGER};
   </select>
 
@@ -153,6 +155,7 @@
     where
       site_order.siteId = site.siteId and
       site_order.userId = userinfo.userId and
+	  site_order.competId is null and
       site_order.status = #{status,jdbcType=INTEGER};
   </select>
 

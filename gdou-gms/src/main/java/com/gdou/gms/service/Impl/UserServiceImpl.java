@@ -43,26 +43,23 @@ public class UserServiceImpl implements UserService
     }
 
     // @Transactional：事务，将下面的所有操作视为一个操作，所有操作成功才提交到数据库，不然就回滚
-    @Override
     @Transactional
-    public Boolean setAdministrator(String userId)
+    @Override
+    public UserInfo setAdministrator(String userId)
     {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserid(userId);
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(userId);
         userInfo.setRoleid(2);
 
-        User user = new User();
-        user.setUserid(userId);
-        user.setRoleid(2);
+        User user = new User(userId, null, 2);
 
-        int update1 = userInfoMapper.updateByPrimaryKeySelective(userInfo);
-        int update2 = userMapper.updateByPrimaryKeySelective(user);
+        userInfoMapper.updateByPrimaryKeySelective(userInfo);
+        userMapper.updateByPrimaryKeySelective(user);
 
-        return update1 == update2 && update1 != 0;
+        return userInfo;
     }
 
-    @Override
     @Transactional
+    @Override
     public Integer addUsers(String jsonString)
     {
         int insert1 = 0;
@@ -73,7 +70,7 @@ public class UserServiceImpl implements UserService
 
         for (UserInfo userInfo : userInfoList)
         {
-            // 查询到的用户不存在才插入到表中
+            // 数据库中不存在用户才插入到表中
             if (userInfoMapper.selectByPrimaryKey(userInfo.getUserid()) == null)
             {
                 insert1 += userInfoMapper.insert(userInfo);
@@ -132,10 +129,13 @@ public class UserServiceImpl implements UserService
     @Override
     public List<UserInfo> queryUsersByCondition(Condition condition)
     {
+        System.out.println(condition);
+
         UserInfoExample example = ExampleUtil.createUserInfoExample(condition);
         return userInfoMapper.selectByExample(example);
     }
 
+    @Transactional
     @Override
     public Boolean deleteUser(String userId)
     {
@@ -145,18 +145,19 @@ public class UserServiceImpl implements UserService
         return delete1 == 1 && delete2 == 1;
     }
 
+    @Transactional
     @Override
-    public Boolean removeAdministrator(String userId)
+    public UserInfo removeAdministrator(String userId)
     {
-        User user = new User(userId, null, 1);
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserid(userId);
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(userId);
         userInfo.setRoleid(1);
 
-        int update1 = userMapper.updateByPrimaryKeySelective(user);
-        int update2 = userInfoMapper.updateByPrimaryKeySelective(userInfo);
+        User user = new User(userId, null, 1);
 
-        return update1 == 1 && update2 == 1;
+        userMapper.updateByPrimaryKeySelective(user);
+        userInfoMapper.updateByPrimaryKeySelective(userInfo);
+
+        return userInfo;
     }
 
 

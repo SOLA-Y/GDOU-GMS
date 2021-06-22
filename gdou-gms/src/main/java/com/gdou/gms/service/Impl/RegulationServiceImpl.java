@@ -37,7 +37,14 @@ public class RegulationServiceImpl implements RegulationService
     @Override
     public List<Regulation> queryAllRegulations()
     {
-        return regulationMapper.selectAllRegulationsAndUsers();
+        List<Regulation> regulationList = regulationMapper.selectAllRegulationsAndUsers();
+
+        for (Regulation regulation : regulationList)
+        {
+            regulation.setContent(regulation.getContent().substring(0,10) + "...");
+        }
+
+        return regulationList;
     }
 
     @Override

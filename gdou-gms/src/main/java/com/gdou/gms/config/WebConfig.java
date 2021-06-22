@@ -27,9 +27,9 @@ public class WebConfig implements WebMvcConfigurer
         // excludePaths.add("/js/**");
 
         // addInterceptor添加拦截器，addPathPatterns配置拦截的路径，拦截所有（包括静态资源），excludePathPatterns配置放行的路径、静态资源
-        registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePaths);
+        // registry.addInterceptor(new LoginInterceptor())
+        //         .addPathPatterns("/**")
+        //         .excludePathPatterns(excludePaths);
 
     }
 }

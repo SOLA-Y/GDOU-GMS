@@ -3,7 +3,6 @@ package com.gdou.gms.service;
 import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
-import com.gdou.gms.pojo.UserInfoExample;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface UserService
 
     public UserInfo login(User user);
 
-    public Boolean setAdministrator(String userId);
+    public UserInfo setAdministrator(String userId);
 
     public Integer addUsers(String jsonString);
 
@@ -28,7 +27,6 @@ public interface UserService
 
     public Boolean deleteUser(String userId);
 
-    public Boolean removeAdministrator(String userId);
-
+    public UserInfo removeAdministrator(String userId);
 
 }

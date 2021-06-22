@@ -134,7 +134,8 @@
       equ_order, equipment, userinfo
     where
       equ_order.equId = equipment.equId and
-      equ_order.userId = userinfo.userId
+      equ_order.userId = userinfo.userId and
+	  equ_order.competId is null
   </select>
 
   <select id="selectOrderAndEquAndUserByType" parameterType="java.lang.Integer" resultMap="OrderAndEquAndUserMap">
@@ -147,6 +148,7 @@
     where
       equ_order.equId = equipment.equId and
       equ_order.userId = userinfo.userId and
+	  equ_order.competId is null and
       equipment.typeId = #{typeId,jdbcType=INTEGER};
   </select>
 
@@ -160,6 +162,7 @@
     where
       equ_order.equId = equipment.equId and
       equ_order.userId = userinfo.userId and
+	  equ_order.competId is null and
       equ_order.status = #{status,jdbcType=INTEGER};
   </select>
 

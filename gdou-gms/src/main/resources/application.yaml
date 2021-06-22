@@ -10,7 +10,25 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
 
-    #  mvc:
-    # 配置静态资源的访问前缀路径
-
-#    static-path-pattern: /static/**
+  # 配置邮箱基本信息
+  mail:
+    # 配置SMTP服务器地址
+    host: smtp.qq.com
+    # 发送者邮箱
+    username: 1229655503@qq.com
+    # 配置密码，注意不是真正的密码，而是刚刚申请到的授权码
+    password: nuhbbocpjuvyfhdj
+    # 端口号465或587
+    port: 465
+    # 默认的邮件编码为UTF-8
+    default-encoding: UTF-8
+    # 配置SSL 加密工厂
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+            required: true

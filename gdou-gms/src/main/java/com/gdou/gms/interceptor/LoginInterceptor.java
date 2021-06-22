@@ -1,6 +1,5 @@
 package com.gdou.gms.interceptor;
 
-import com.gdou.gms.pojo.User;
 import com.gdou.gms.util.JwtUtil;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -8,7 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 // 做登录检查，判断是否已经进行登录，没登录直接跳转到登录页面
 
@@ -47,10 +45,10 @@ public class LoginInterceptor implements HandlerInterceptor
         }
         else
         {
-            response.setHeader("TokenError", "401");
+            response.setHeader("401", "TokenDisable");
+            return false;
+            // throw new RuntimeException("401401401401401401401401401401");
         }
-
-        return false;
 
     }
 

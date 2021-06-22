@@ -7,6 +7,7 @@ import com.gdou.gms.service.EquipmentService;
 import com.gdou.gms.util.ExampleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class EquipmentServiceImpl implements EquipmentService
         return update == 1;
     }
 
+    @Transactional
     @Override
     public Boolean returnEquipment(Integer equOrderId)
     {
@@ -66,8 +68,12 @@ public class EquipmentServiceImpl implements EquipmentService
         Equipment equipment = equipmentMapper.selectByPrimaryKey(equOrder.getEquid());
 
         equipment.setLeft(equipment.getLeft() + equOrder.getNum());
+        Boolean update1 = updateEquipment(equipment);
 
-        return updateEquipment(equipment);
+        equOrder.setStatus(3);
+        int update2 = equOrderMapper.updateByPrimaryKeySelective(equOrder);
+
+        return update1 && update2 == 1;
     }
 
     @Override
@@ -76,6 +82,19 @@ public class EquipmentServiceImpl implements EquipmentService
         equOrder.setStatus(0);
         int insert = equOrderMapper.insert(equOrder);
         return insert == 1;
+    }
+
+    @Transactional
+    @Override
+    public Boolean repairEquipment(EquOrder equOrder)
+    {
+        Equipment equipment = equipmentMapper.selectByPrimaryKey(equOrder.getEquid());
+        equipment.setLeft(equipment.getLeft() - equOrder.getNum());
+        int update = equipmentMapper.updateByPrimaryKey(equipment);
+        equOrder.setStatus(2);
+        int insert = equOrderMapper.insert(equOrder);
+
+        return update == insert && update == 1;
     }
 
     @Override
@@ -133,6 +152,7 @@ public class EquipmentServiceImpl implements EquipmentService
         return equOrderMapper.selectOrderAndEquAndUserByStatus(status);
     }
 
+    @Transactional
     @Override
     public Boolean verifiedEquOrder(Integer equOrderId)
     {
@@ -147,4 +167,5 @@ public class EquipmentServiceImpl implements EquipmentService
 
         return update1 == update2 && update1 == 1;
     }
+
 }

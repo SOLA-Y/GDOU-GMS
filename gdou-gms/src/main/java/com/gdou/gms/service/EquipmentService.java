@@ -25,6 +25,8 @@ public interface EquipmentService
 
     public Boolean addEquOrder(EquOrder equOrder);
 
+    public Boolean repairEquipment(EquOrder equOrder);
+
     public Boolean deleteEquOrder(Integer equOrderId);
 
     public Boolean deleteEquOrderByCompetId(String competitionId);

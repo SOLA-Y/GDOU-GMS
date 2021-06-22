@@ -1,9 +1,11 @@
 package com.gdou.gms.controller;
 
+import cn.hutool.json.JSON;
 import cn.hutool.json.JSONObject;
 import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.User;
 import com.gdou.gms.pojo.UserInfo;
+import com.gdou.gms.service.MailService;
 import com.gdou.gms.service.UserService;
 import com.gdou.gms.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @CrossOrigin
@@ -24,18 +25,8 @@ public class UserController
     @Autowired
     private UserService userService;
 
-    @GetMapping("/getMsg")
-    public String getMsg()
-    {
-        return "你好";
-    }
-
-    // 验证token的有效性
-    @GetMapping("/checkToken")
-    public Boolean checkToken(HttpServletRequest request)
-    {
-        return JwtUtil.checkToken(request.getHeader("token"));
-    }
+    @Autowired
+    private MailService mailService;
 
     // 登录
     @PostMapping("/login")
@@ -106,7 +97,16 @@ public class UserController
     @GetMapping("/setAdmin")
     public Boolean setAdministrator(@RequestParam(value = "userId") String userId)
     {
-        return userService.setAdministrator(userId);
+        try
+        {
+            UserInfo userInfo = userService.setAdministrator(userId);
+            mailService.sendSetMail(userInfo);
+            return true;
+        } catch (Exception e)
+        {
+            return false;
+        }
+
     }
 
     // 更新密码
@@ -144,7 +144,10 @@ public class UserController
     @PostMapping("/queryUsersByCondition")
     public List<UserInfo> queryUsersByCondition(@RequestBody Condition condition)
     {
-        return userService.queryUsersByCondition(condition);
+        System.out.println(condition);
+
+        return null;
+        // return userService.queryUsersByCondition(condition);
     }
 
     // 删除用户
@@ -158,7 +161,16 @@ public class UserController
     @GetMapping("/removeAdmin")
     public Boolean removeAdministrator(@RequestParam(value = "userId") String userId)
     {
-        return userService.removeAdministrator(userId);
+        try
+        {
+            UserInfo userInfo = userService.removeAdministrator(userId);
+            mailService.sendRemoveMail(userInfo);
+            return true;
+        } catch (Exception e)
+        {
+            return false;
+        }
+
     }
 
 }

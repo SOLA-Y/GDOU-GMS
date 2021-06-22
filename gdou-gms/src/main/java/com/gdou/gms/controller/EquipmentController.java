@@ -58,6 +58,13 @@ public class EquipmentController
         return equipmentService.addEquOrder(equOrder);
     }
 
+    // 添加器材维修订单
+    @GetMapping("/repairEquipment")
+    public Boolean repairEquipment(@RequestBody EquOrder equOrder)
+    {
+        return equipmentService.repairEquipment(equOrder);
+    }
+
     @GetMapping("/deleteEquOrder")
     public Boolean deleteEquOrder(@RequestParam("equOrderId") Integer equOrderId)
     {
@@ -88,14 +95,14 @@ public class EquipmentController
         return equipmentService.queryEquOrdersByStatus(status);
     }
 
-    // 场地预约审核通过
+    // 器材预约审核通过
     @GetMapping("/verifiedEquOrder")
     public Boolean verifiedEquOrder(@RequestParam("equOrderId") Integer equOrderId)
     {
         return equipmentService.verifiedEquOrder(equOrderId);
     }
 
-    // 场地归还
+    // 器材归还（器材申请归还或器材维修完成）
     @GetMapping("/returnEquipment")
     public Boolean returnEquipment(@RequestParam("equOrderId") Integer equOrderId)
     {

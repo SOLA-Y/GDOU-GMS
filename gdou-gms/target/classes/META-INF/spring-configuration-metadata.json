@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "mail",
+      "type": "com.gdou.gms.service.Impl.MailServiceImpl",
+      "sourceType": "com.gdou.gms.service.Impl.MailServiceImpl"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
