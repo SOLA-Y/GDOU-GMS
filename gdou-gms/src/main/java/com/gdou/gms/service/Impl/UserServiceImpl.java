@@ -66,22 +66,17 @@ public class UserServiceImpl implements UserService
         int insert2 = 0;
 
         List<UserInfo> userInfoList = JSONUtil.toList(jsonString, UserInfo.class);
-        List<User> userList = JSONUtil.toList(jsonString, User.class);
 
         for (UserInfo userInfo : userInfoList)
         {
             // 数据库中不存在用户才插入到表中
             if (userInfoMapper.selectByPrimaryKey(userInfo.getUserid()) == null)
             {
+                userInfo.setRoleid(1);
                 insert1 += userInfoMapper.insert(userInfo);
-            }
-        }
 
-        for (User user : userList)
-        {
-            if (userMapper.selectByPrimaryKey(user.getUserid()) == null)
-            {
-                user.setPassword(DigestUtil.md5Hex(user.getPassword()));
+                String password = DigestUtil.md5Hex(userInfo.getUserid());
+                User user = new User(userInfo.getUserid(), password, 1);
                 insert2 += userMapper.insert(user);
             }
         }

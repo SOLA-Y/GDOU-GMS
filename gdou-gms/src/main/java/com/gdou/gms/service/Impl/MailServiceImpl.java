@@ -21,14 +21,10 @@ public class MailServiceImpl implements MailService
     private String from;
     @Value("${mail.subject}")
     private String subject;
-    @Value("${mail.content.set.prefix}")
-    private String setContentPrefix;
-    @Value("${mail.content.set.suffix}")
-    private String setContentSuffix;
-    @Value("${mail.content.remove.prefix}")
-    private String removeContentPrefix;
-    @Value("${mail.content.remove.suffix}")
-    private String removeContentSuffix;
+    @Value("${mail.content.set}")
+    private String setContent;
+    @Value("${mail.content.remove}")
+    private String removeContent;
 
     @Override
     public void sendSetMail(UserInfo userInfo)
@@ -36,8 +32,9 @@ public class MailServiceImpl implements MailService
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(from);
         mailMessage.setTo(userInfo.getMail());
+        mailMessage.setCc(from);
         mailMessage.setSubject(subject);
-        mailMessage.setText(setContentPrefix + userInfo.getUsername() + setContentSuffix);
+        mailMessage.setText(userInfo.getUsername() + setContent + from);
 
         javaMailSender.send(mailMessage);
     }
@@ -48,8 +45,9 @@ public class MailServiceImpl implements MailService
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(from);
         mailMessage.setTo(userInfo.getMail());
+        mailMessage.setCc(from);
         mailMessage.setSubject(subject);
-        mailMessage.setText(removeContentPrefix + userInfo.getUsername() + removeContentSuffix);
+        mailMessage.setText(userInfo.getUsername() + removeContent + from);
 
         javaMailSender.send(mailMessage);
     }

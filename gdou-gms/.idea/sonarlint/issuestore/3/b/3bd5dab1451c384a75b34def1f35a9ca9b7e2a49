@@ -1,0 +1,12 @@
+
+a
+java:S2184"FCast one of the operands of this multiplication operation to a "long".(ôëé½ùÿÿÿÿ
+N	java:S106-"9Replace this use of System.out or System.err by a logger.(êÖÏµ
+S	java:S106."9Replace this use of System.out or System.err by a logger.(ƒæÚşÿÿÿÿ
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(òú…ğ
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(¡Ô×úÿÿÿÿ
+N	java:S1061"9Replace this use of System.out or System.err by a logger.(©È–
+R
+java:S1854?"=Remove this useless assignment to local variable "claimsJws".(õ‚­
+C
+java:S1481?".Remove this unused "claimsJws" local variable.(õ‚­

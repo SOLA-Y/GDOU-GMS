@@ -1,6 +1,5 @@
 package com.gdou.gms.controller;
 
-import cn.hutool.json.JSON;
 import cn.hutool.json.JSONObject;
 import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.User;
@@ -14,7 +13,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @CrossOrigin
@@ -73,24 +71,13 @@ public class UserController
         return jsonObject;
     }
 
-    // 添加普通用户
-    @GetMapping("/addUsers")
-    public Object addUsers(@RequestParam(value = "usersJson") String jsonString)
+    // 添加普通用户，返回添加用户数量，-1表示添加失败
+    @PostMapping("/addUsers")
+    public Integer addUsers(@RequestParam("jsonString") String jsonString)
     {
-        JSONObject jsonObject = new JSONObject();
-        Integer add = userService.addUsers(jsonString);
+        System.out.println(jsonString);
 
-        if (add != -1)
-        {
-            jsonObject.putOpt("msg", "添加用户成功");
-            jsonObject.putOpt("count", add);
-        }
-        else
-        {
-            jsonObject.putOpt("msg", "添加用户失败");
-        }
-
-        return jsonObject;
+        return userService.addUsers(jsonString);
     }
 
     // 设置管理员权限
@@ -144,10 +131,10 @@ public class UserController
     @PostMapping("/queryUsersByCondition")
     public List<UserInfo> queryUsersByCondition(@RequestBody Condition condition)
     {
-        System.out.println(condition);
+        // System.out.println(condition);
 
-        return null;
-        // return userService.queryUsersByCondition(condition);
+        // return null;
+        return userService.queryUsersByCondition(condition);
     }
 
     // 删除用户
