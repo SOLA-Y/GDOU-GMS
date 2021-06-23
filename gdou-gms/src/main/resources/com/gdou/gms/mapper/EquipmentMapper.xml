@@ -7,7 +7,7 @@
     <result column="equ_fee" jdbcType="DECIMAL" property="equFee" />
     <result column="total_cost" jdbcType="DECIMAL" property="totalCost" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" />
-    <result column="left" jdbcType="INTEGER" property="left" />
+    <result column="equ_left" jdbcType="INTEGER" property="left" />
     <result column="buy_date" jdbcType="DATE" property="buyDate" />
     <result column="adminId" jdbcType="CHAR" property="adminid" />
     <result column="typeId" jdbcType="INTEGER" property="typeid" />
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    equId, equ_name, equ_fee, total_cost, quantity, left, buy_date, adminId, typeId
+    equId, equ_name, equ_fee, total_cost, quantity, equ_left, buy_date, adminId, typeId
   </sql>
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.EquipmentExample" resultMap="BaseResultMap">
     select
@@ -105,7 +105,7 @@
   </delete>
   <insert id="insert" parameterType="com.gdou.gms.pojo.Equipment">
     insert into equipment (equId, equ_name, equ_fee, 
-      total_cost, quantity, left, 
+      total_cost, quantity, equ_left,
       buy_date, adminId, typeId)
     values (#{equid,jdbcType=INTEGER}, #{equName,jdbcType=VARCHAR}, #{equFee,jdbcType=DECIMAL}, 
       #{totalCost,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, #{left,jdbcType=INTEGER}, 
@@ -130,7 +130,7 @@
         quantity,
       </if>
       <if test="left != null">
-        left,
+        equ_left,
       </if>
       <if test="buyDate != null">
         buy_date,
@@ -197,7 +197,7 @@
         quantity = #{record.quantity,jdbcType=INTEGER},
       </if>
       <if test="record.left != null">
-        left = #{record.left,jdbcType=INTEGER},
+        equ_left = #{record.left,jdbcType=INTEGER},
       </if>
       <if test="record.buyDate != null">
         buy_date = #{record.buyDate,jdbcType=DATE},
@@ -220,7 +220,7 @@
       equ_fee = #{record.equFee,jdbcType=DECIMAL},
       total_cost = #{record.totalCost,jdbcType=DECIMAL},
       quantity = #{record.quantity,jdbcType=INTEGER},
-      left = #{record.left,jdbcType=INTEGER},
+      equ_left = #{record.left,jdbcType=INTEGER},
       buy_date = #{record.buyDate,jdbcType=DATE},
       adminId = #{record.adminid,jdbcType=CHAR},
       typeId = #{record.typeid,jdbcType=INTEGER}
@@ -244,7 +244,7 @@
         quantity = #{quantity,jdbcType=INTEGER},
       </if>
       <if test="left != null">
-        left = #{left,jdbcType=INTEGER},
+        equ_left = #{left,jdbcType=INTEGER},
       </if>
       <if test="buyDate != null">
         buy_date = #{buyDate,jdbcType=DATE},
@@ -264,7 +264,7 @@
       equ_fee = #{equFee,jdbcType=DECIMAL},
       total_cost = #{totalCost,jdbcType=DECIMAL},
       quantity = #{quantity,jdbcType=INTEGER},
-      left = #{left,jdbcType=INTEGER},
+      equ_left = #{left,jdbcType=INTEGER},
       buy_date = #{buyDate,jdbcType=DATE},
       adminId = #{adminid,jdbcType=CHAR},
       typeId = #{typeid,jdbcType=INTEGER}

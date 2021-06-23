@@ -1,10 +1,14 @@
 package com.gdou.gms.service;
 
+import com.gdou.gms.pojo.Equipment;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,4 +40,21 @@ class EquipmentServiceTest
         System.out.println(equipmentService.queryEquOrdersByStatus(1));
     }
 
+    @Test
+    void addEquipment()
+    {
+        // System.out.println(new Date());
+
+        Equipment equipment = new Equipment();
+        equipment.setEquName("篮球");
+        equipment.setEquFee(new BigDecimal(2.00));
+        equipment.setTotalCost(new BigDecimal(1000.00));
+        equipment.setQuantity(100);
+        equipment.setLeft(100);
+        equipment.setBuyDate(new Date());
+        equipment.setTypeid(1);
+
+        equipmentService.addEquipment(equipment);
+
+    }
 }

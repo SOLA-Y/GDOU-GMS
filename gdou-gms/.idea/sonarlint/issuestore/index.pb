@@ -1,8 +1,6 @@
 
 g
 7src/main/java/com/gdou/gms/pojo/CompetitionExample.java,7\6\766fa99df698a874a17b5ea5ed449141f27b0c91
-f
-6src/main/java/com/gdou/gms/mapper/EquipmentMapper.java,4\2\42913d5495de2f66e3766b946d19702356eb2956
 e
 5src/main/java/com/gdou/gms/mapper/UserInfoMapper.java,4\4\441ab1c122e98fa200c8f55fe1c07d9bc1542d7d
 a
@@ -47,8 +45,6 @@ Y
 )src/main/java/com/gdou/gms/pojo/Site.java,f\6\f6e1a88bc9ca45fec2c2c1b71d57e7b1bc2611bc
 h
 8src/main/java/com/gdou/gms/mapper/CompetitionMapper.java,d\a\da4314a6b4a09427c96076368dd3a9668aad2625
-l
-<src/test/java/com/gdou/gms/service/EquipmentServiceTest.java,0\c\0c7bf3f0ccf3886ce7526bda733a0ca4b0f4d12d
 i
 9src/test/java/com/gdou/gms/mapper/UserInfoMapperTest.java,e\1\e17022a6da1b9f1f137f2718ab2d546a764be7fb
 Y
@@ -61,8 +57,6 @@ n
 0src/main/java/com/gdou/gms/util/ExampleUtil.java,9\a\9aa59d6fc27fa540745fa179d5bfc658db00a9cb
 `
 0src/main/java/com/gdou/gms/pojo/Competition.java,7\0\70afff1dde7a02b9ed8930001369e66716083a5b
-^
-.src/main/java/com/gdou/gms/pojo/Equipment.java,8\c\8c0eedb7270a82ee4d6242cdadaed4c2976fff25
 o
 ?src/main/java/com/gdou/gms/controller/RegulationController.java,6\1\61ce1abde7cd8bec8695c4e2928f62a26d0e1d40
 ^

@@ -6,11 +6,14 @@ import com.gdou.gms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 @Service
+@EnableAsync
 @PropertySource(value = {"classpath:mail.properties"})
 public class MailServiceImpl implements MailService
 {
@@ -28,29 +31,45 @@ public class MailServiceImpl implements MailService
     private String removeContent;
 
     @Override
-    public void sendSetMail(UserInfo userInfo)
+    public Boolean sendSetMail(UserInfo userInfo)
     {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(from);
-        mailMessage.setTo(userInfo.getMail());
-        mailMessage.setCc(from);
-        mailMessage.setSubject(subject);
-        mailMessage.setText(userInfo.getUsername() + setContent + from);
+        try
+        {
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setFrom(from);
+            mailMessage.setTo(userInfo.getMail());
+            mailMessage.setCc(from);
+            mailMessage.setSubject(subject);
+            mailMessage.setText(userInfo.getUsername() + setContent + from);
+            javaMailSender.send(mailMessage);
 
-        javaMailSender.send(mailMessage);
+            System.out.println("发送成功");
+            return true;
+        } catch (MailException e)
+        {
+            return false;
+        }
     }
 
     @Override
-    public void sendRemoveMail(UserInfo userInfo)
+    public Boolean sendRemoveMail(UserInfo userInfo)
     {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(from);
-        mailMessage.setTo(userInfo.getMail());
-        mailMessage.setCc(from);
-        mailMessage.setSubject(subject);
-        mailMessage.setText(userInfo.getUsername() + removeContent + from);
+        try
+        {
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setFrom(from);
+            mailMessage.setTo(userInfo.getMail());
+            mailMessage.setCc(from);
+            mailMessage.setSubject(subject);
+            mailMessage.setText(userInfo.getUsername() + removeContent + from);
+            javaMailSender.send(mailMessage);
 
-        javaMailSender.send(mailMessage);
+            System.out.println("发送成功");
+            return true;
+        } catch (MailException e)
+        {
+            return false;
+        }
     }
 
     @Override

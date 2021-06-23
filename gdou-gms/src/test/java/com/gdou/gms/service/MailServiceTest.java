@@ -13,18 +13,38 @@ class MailServiceTest
     @Autowired
     private MailService mailService;
 
+    public void test()
+    {
+        for (int i = 0; i < 99999999; i++)
+        {
+
+        }
+
+        System.out.println("打印成功");
+    }
+
     @Test
     void sendAddMail()
     {
         UserInfo userInfo = new UserInfo(null, "林志宏", null, "refg2398467215@qq.com", null, null);
         // mailService.sendSetMail(userInfo);
 
-        // ThreadUtil.execAsync()
+
 
         try
         {
-            mailService.sendSetMail(userInfo);
-            System.out.println("发送成功");
+            // mailService.sendSetMail(userInfo);
+
+            for (int i = 0; i < 10; i++)
+            {
+
+            }
+
+            ThreadUtil.execute(() -> mailService.sendSetMail(userInfo));
+
+            // ThreadUtil.execAsync();
+            System.out.println("添加成功");
+
         } catch (Exception e)
         {
             System.out.println("发送失败");
