@@ -1,5 +1,6 @@
 package com.gdou.gms.service.Impl;
 
+import cn.hutool.core.util.RandomUtil;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,18 @@ public class MailServiceImpl implements MailService
 
         javaMailSender.send(mailMessage);
     }
+
+    @Override
+    public String sendRandomStringMail(UserInfo userInfo)
+    {
+        String randomChars = "";
+        for (int i = 0; i < 6; i++)
+        {
+            randomChars += RandomUtil.randomChar();
+        }
+
+        return randomChars;
+    }
+
 
 }

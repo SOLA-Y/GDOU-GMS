@@ -23,8 +23,21 @@ public class EquipmentServiceImpl implements EquipmentService
     @Override
     public Boolean addEquipment(Equipment equipment)
     {
-        int insert = equipmentMapper.insert(equipment);
-        return insert == 1;
+        EquipmentExample example = new EquipmentExample();
+        EquipmentExample.Criteria criteria = example.createCriteria();
+
+        criteria.andTypeidEqualTo(equipment.getTypeid());
+
+        if (equipmentMapper.selectByExample(example) != null)
+        {
+            int update = equipmentMapper.updateByExampleSelective(equipment, example);
+            return update == 1;
+        }
+        else
+        {
+            int insert = equipmentMapper.insert(equipment);
+            return insert == 1;
+        }
     }
 
     @Override

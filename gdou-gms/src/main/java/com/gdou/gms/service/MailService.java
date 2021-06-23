@@ -8,4 +8,7 @@ public interface MailService
     public void sendSetMail(UserInfo userInfo);
     
     public void sendRemoveMail(UserInfo userInfo);
+
+    public String sendRandomStringMail(UserInfo userInfo);
+
 }
