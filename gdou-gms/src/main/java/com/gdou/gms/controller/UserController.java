@@ -112,9 +112,9 @@ public class UserController
         return userService.updatePassword(originalPwd, user);
     }
 
-    // 更新用户信息
+    // 用户自己更新本人信息
     @PostMapping("/updateUserInfo")
-    public Object updateUserInfo(@RequestBody UserInfo userInfo, @RequestParam("code") String code)
+    public Object updateUserInfoBySelf(@RequestBody UserInfo userInfo, @RequestParam("code") String code)
     {
         JSONObject jsonObject = new JSONObject();
 
@@ -134,7 +134,14 @@ public class UserController
         return userService.updateUserInfo(userInfo);
     }
 
-    // 发送验证码信息
+    // 管理员更新用户信息
+    @PostMapping("/updateUserInfo")
+    public Boolean updateUserInfoByAdmin(@RequestBody UserInfo userInfo)
+    {
+        return userService.updateUserInfo(userInfo);
+    }
+
+    // 发送验证码邮件
     @PostMapping("/sendValidateCodeMail")
     public Boolean sendValidateCodeMail(@RequestBody UserInfo userInfo)
     {
@@ -161,9 +168,6 @@ public class UserController
     @PostMapping("/queryUsersByCondition")
     public List<UserInfo> queryUsersByCondition(@RequestBody Condition condition)
     {
-        // System.out.println(condition);
-
-        // return null;
         return userService.queryUsersByCondition(condition);
     }
 

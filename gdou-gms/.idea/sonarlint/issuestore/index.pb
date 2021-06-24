@@ -53,8 +53,6 @@ n
 >src/test/java/com/gdou/gms/service/CompetitionServiceTest.java,8\9\890b4fcbcca6f463c3a8216f03defa136f75334f
 `
 0src/main/java/com/gdou/gms/util/ExampleUtil.java,9\a\9aa59d6fc27fa540745fa179d5bfc658db00a9cb
-o
-?src/main/java/com/gdou/gms/controller/RegulationController.java,6\1\61ce1abde7cd8bec8695c4e2928f62a26d0e1d40
 ^
 .src/main/java/com/gdou/gms/pojo/Condition.java,d\f\dfea0a0d6229ebf2ea378da8e5b80824f5638629
 \
@@ -79,10 +77,6 @@ i
 9src/main/java/com/gdou/gms/service/RegulationService.java,b\4\b4dd6c95d25a189a891935c939b9621b1ba98ea1
 g
 7src/test/java/com/gdou/gms/service/UserServiceTest.java,3\c\3c5401cbd5a413724f2674b913d19dd8958b2048
-c
-3src/main/java/com/gdou/gms/service/SiteService.java,8\d\8d07cdeb023ef3037d2892e698a2bb352bffe884
-l
-<src/main/java/com/gdou/gms/service/Impl/SiteServiceImpl.java,6\9\69ad51f9b2e5e69bd689336438d165e717ef53ad
 s
 Csrc/main/java/com/gdou/gms/service/Impl/CompetitionServiceImpl.java,d\5\d56332361bd0269936863a0bebafdc85f18de84a
 g
