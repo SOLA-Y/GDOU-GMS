@@ -18,9 +18,9 @@ public class ExampleUtil
         {
             criteria.andUsernameLike("%" + condition.getUsername() + "%");
         }
-        if (StrUtil.isNotBlank(condition.getGender()))
+        if (StrUtil.isNotBlank(condition.getUserId()))
         {
-            criteria.andGenderEqualTo(condition.getGender());
+            criteria.andUseridEqualTo(condition.getUserId());
         }
         if (condition.getRoleid() != null)
         {

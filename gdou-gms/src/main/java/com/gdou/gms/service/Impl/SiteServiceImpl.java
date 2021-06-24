@@ -141,15 +141,9 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
-    public List<SiteOrder> querySiteOrdersByType(Integer typeId)
+    public List<SiteOrder> querySiteOrdersByCondition(Condition condition)
     {
-        return siteOrderMapper.selectOrderAndSiteAndUserByType(typeId);
-    }
-
-    @Override
-    public List<SiteOrder> querySiteOrdersByStatus(Integer status)
-    {
-        return siteOrderMapper.selectOrderAndSiteAndUserByStatus(status);
+        return siteOrderMapper.selectOrderAndSiteAndUserByCondition(condition);
     }
 
     @Transactional

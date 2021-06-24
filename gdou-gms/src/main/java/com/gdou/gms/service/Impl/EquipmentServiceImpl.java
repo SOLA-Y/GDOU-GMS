@@ -161,15 +161,9 @@ public class EquipmentServiceImpl implements EquipmentService
     }
 
     @Override
-    public List<EquOrder> queryEquOrdersByType(Integer typeId)
+    public List<EquOrder> queryEquOrdersByCondition(Condition condition)
     {
-        return equOrderMapper.selectOrderAndEquAndUserByType(typeId);
-    }
-
-    @Override
-    public List<EquOrder> queryEquOrdersByStatus(Integer status)
-    {
-        return equOrderMapper.selectOrderAndEquAndUserByStatus(status);
+        return equOrderMapper.selectOrderAndEquAndUserByCondition(condition);
     }
 
     @Transactional

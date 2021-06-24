@@ -31,11 +31,13 @@ public class UserInfo implements Serializable {
         this.roleid = roleid;
     }
 
-    public String getUserid() {
+    public String getUserid()
+    {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(String userid)
+    {
         this.userid = userid;
     }
 

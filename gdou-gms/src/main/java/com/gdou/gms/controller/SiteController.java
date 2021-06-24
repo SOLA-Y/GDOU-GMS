@@ -77,16 +77,10 @@ public class SiteController
         return siteService.queryAllSiteOrders();
     }
 
-    @GetMapping("/querySiteOrdersByType")
-    public List<SiteOrder> querySiteOrdersByType(@RequestParam("typeId") Integer typeId)
+    @PostMapping("/querySiteOrdersByCondition")
+    public List<SiteOrder> querySiteOrdersByCondition(@RequestBody Condition condition)
     {
-        return siteService.querySiteOrdersByType(typeId);
-    }
-
-    @GetMapping("/querySiteOrdersByStatus")
-    public List<SiteOrder> querySiteOrdersByStatus(@RequestParam("status") Integer status)
-    {
-        return siteService.querySiteOrdersByStatus(status);
+        return siteService.querySiteOrdersByCondition(condition);
     }
 
     // 场地预约审核通过

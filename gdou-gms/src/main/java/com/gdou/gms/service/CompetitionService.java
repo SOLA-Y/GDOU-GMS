@@ -1,6 +1,7 @@
 package com.gdou.gms.service;
 
 import com.gdou.gms.pojo.Competition;
+import com.gdou.gms.pojo.Condition;
 
 import java.util.List;
 
@@ -15,8 +16,6 @@ public interface CompetitionService
 
     public List<Competition> queryAllCompetitions();
 
-    public List<Competition> queryCompetitionsByType(Integer typeId);
-
-    public List<Competition> queryCompetitionsByStatus(Integer status);
+    public List<Competition> queryCompetitionsByCondition(Condition condition);
 
 }

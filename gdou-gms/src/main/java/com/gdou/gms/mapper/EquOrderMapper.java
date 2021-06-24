@@ -1,5 +1,6 @@
 package com.gdou.gms.mapper;
 
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.EquOrder;
 import com.gdou.gms.pojo.EquOrderExample;
 import java.util.List;
@@ -24,9 +25,7 @@ public interface EquOrderMapper {
 
     EquOrder selectOrderAndEquAndUserById(Integer orderid);
 
-    List<EquOrder> selectOrderAndEquAndUserByType(Integer typeId);
-
-    List<EquOrder> selectOrderAndEquAndUserByStatus(Integer status);
+    List<EquOrder> selectOrderAndEquAndUserByCondition(@Param("condition") Condition condition);
 
     int updateByExampleSelective(@Param("record") EquOrder record, @Param("example") EquOrderExample example);
 

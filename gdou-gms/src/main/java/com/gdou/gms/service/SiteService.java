@@ -37,9 +37,7 @@ public interface SiteService
 
     public List<SiteOrder> queryAllSiteOrders();
 
-    public List<SiteOrder> querySiteOrdersByType(Integer typeId);
-
-    public List<SiteOrder> querySiteOrdersByStatus(Integer status);
+    public List<SiteOrder> querySiteOrdersByCondition(Condition condition);
 
     public Boolean verifiedSiteOrder(Integer siteOrderId);
 

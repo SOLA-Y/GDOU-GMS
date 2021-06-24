@@ -187,7 +187,7 @@
       competition.userId = userinfo.userId
   </select>
 
-  <select id="selectCompetitionsByType" parameterType="java.lang.Integer" resultMap="CompetitionMap">
+  <select id="selectCompetitionsByCondition" parameterType="com.gdou.gms.pojo.Condition" resultMap="CompetitionMap">
     select
       competition.*,
       site_order.*,
@@ -202,31 +202,15 @@
       competition.siteId = site.siteId and
       competition.eorder_id = equ_order.orderId and
       competition.equId = equipment.equId and
-      competition.userId = userinfo.userId and
-      competition.typeId = #{typeId,jdbcType=INTEGER}
-  </select>
-
-  <select id="selectCompetitionsByStatus" parameterType="java.lang.Integer" resultMap="CompetitionMap">
-    select
-      competition.*,
-      site_order.*,
-      site.*,
-      equ_order.*,
-      equipment.*,
-      userinfo.*
-    from
-      competition, site_order, site, equ_order,  equipment, userinfo
-    where
-      competition.sorder_id = site_order.orderId and
-      competition.siteId = site.siteId and
-      competition.eorder_id = equ_order.orderId and
-      competition.equId = equipment.equId and
-      competition.userId = userinfo.userId and
-      <if test="status == 0">
-        not (site_order.status = #{status,jdbcType=INTEGER} and equ_order.status = #{status,jdbcType=INTEGER})
+      competition.userId = userinfo.userId
+      <if test="condition.typeId != null">
+        and competition.typeId = #{condition.typeId,jdbcType=INTEGER}
       </if>
-      <if test="status == 1">
-        site_order.status = #{status,jdbcType=INTEGER} and equ_order.status = #{status,jdbcType=INTEGER}
+      <if test="condition.status == 0">
+        and not (site_order.status = #{condition.status,jdbcType=INTEGER} and equ_order.status = #{condition.status,jdbcType=INTEGER})
+      </if>
+      <if test="condition.status == 1">
+        and site_order.status = #{condition.status,jdbcType=INTEGER} and equ_order.status = #{condition.status,jdbcType=INTEGER}
       </if>
   </select>
 

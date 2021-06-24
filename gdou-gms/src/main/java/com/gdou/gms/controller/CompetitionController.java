@@ -2,6 +2,7 @@ package com.gdou.gms.controller;
 
 import cn.hutool.core.date.DateUtil;
 import com.gdou.gms.pojo.Competition;
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.EquOrder;
 import com.gdou.gms.pojo.SiteOrder;
 import com.gdou.gms.service.CompetitionService;
@@ -82,16 +83,10 @@ public class CompetitionController
         return competitionService.queryAllCompetitions();
     }
 
-    @GetMapping("/queryCompetitionsByType")
-    public List<Competition> queryCompetitionsByType(@RequestParam("typeId") Integer typeId)
+    @PostMapping("/queryCompetitionsByCondition")
+    public List<Competition> queryCompetitionsByCondition(@RequestBody Condition condition)
     {
-        return competitionService.queryCompetitionsByType(typeId);
-    }
-
-    @GetMapping("/queryCompetitionsByStatus")
-    public List<Competition> queryCompetitionsByStatus(@RequestParam("status") Integer status)
-    {
-        return competitionService.queryCompetitionsByStatus(status);
+        return competitionService.queryCompetitionsByCondition(condition);
     }
 
     // 赛事申请审核通过

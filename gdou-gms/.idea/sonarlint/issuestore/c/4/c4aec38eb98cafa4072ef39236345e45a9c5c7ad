@@ -1,23 +1,23 @@
 
+g
+java:S1192¿"IDefine a constant instead of duplicating this literal "siteFee" 10 times.(¢ÖÖˆ8Â£äê£/
 e
-java:S1192²"IDefine a constant instead of duplicating this literal "siteNum" 12 times.(¶Üëøÿÿÿÿ
+java:S1192³"IDefine a constant instead of duplicating this literal "siteNum" 12 times.(¶Üëøÿÿÿÿ
 ^
-java:S1192v"HDefine a constant instead of duplicating this literal "siteid" 10 times.(ˆ©ûí
+java:S1192w"HDefine a constant instead of duplicating this literal "siteid" 10 times.(ˆ©ûí
 _
-java:S1192¶"HDefine a constant instead of duplicating this literal "typeid" 10 times.(«ˆ‡¹
+java:S1192·"HDefine a constant instead of duplicating this literal "typeid" 10 times.(«ˆ‡¹
 ^
-java:S1192ú"GDefine a constant instead of duplicating this literal "state" 10 times.(ž“ÉÕ
+java:S1192û"GDefine a constant instead of duplicating this literal "state" 10 times.(ž“ÉÕ
 a
-java:S1192ø"JDefine a constant instead of duplicating this literal "siteArea" 12 times.(ÛËƒ¾
-c
-java:S1192¾"GDefine a constant instead of duplicating this literal "feeid" 10 times.(ÊÞí½ÿÿÿÿÿ
-`	java:S112X"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
-`	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºþÿÿÿÿ
-Z	java:S112f"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
+java:S1192ù"JDefine a constant instead of duplicating this literal "siteArea" 12 times.(ÛËƒ¾
+`	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(ÔÁñÍøÿÿÿÿ
+`	java:S112`"FDefine and throw a dedicated exception instead of using a generic one.(õÜ—ºþÿÿÿÿ
+Z	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(ìá¤
 
 S
-java:S11551">Use isEmpty() to check whether the collection is empty or not.(Á½¼s
+java:S11552">Use isEmpty() to check whether the collection is empty or not.(Á½¼s
 Y
-java:S1155K">Use isEmpty() to check whether the collection is empty or not.(í´Õûüÿÿÿÿ
+java:S1155L">Use isEmpty() to check whether the collection is empty or not.(í´Õûüÿÿÿÿ
 v
-java:S14888"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì
+java:S14889"`Immediately return this expression instead of assigning it to the temporary variable "criteria".(¶Õ¯ì

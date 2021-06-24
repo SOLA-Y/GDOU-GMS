@@ -1,10 +1,9 @@
 package com.gdou.gms.service;
 
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.Equipment;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
@@ -25,22 +24,6 @@ class EquipmentServiceTest
     }
 
     @Test
-    void queryAllEquOrders()
-    {
-    }
-
-    @Test
-    void queryEquOrdersByType()
-    {
-    }
-
-    @Test
-    void queryEquOrdersByStatus()
-    {
-        System.out.println(equipmentService.queryEquOrdersByStatus(1));
-    }
-
-    @Test
     void addEquipment()
     {
         // System.out.println(new Date());
@@ -56,5 +39,15 @@ class EquipmentServiceTest
 
         equipmentService.addEquipment(equipment);
 
+    }
+
+    @Test
+    void queryEquOrdersByCondition()
+    {
+        Condition condition = new Condition();
+        condition.setTypeId(1);
+        condition.setStatus(0);
+
+        System.out.println(equipmentService.queryEquOrdersByCondition(condition));
     }
 }

@@ -138,7 +138,7 @@
 	  equ_order.competId is null
   </select>
 
-  <select id="selectOrderAndEquAndUserByType" parameterType="java.lang.Integer" resultMap="OrderAndEquAndUserMap">
+  <select id="selectOrderAndEquAndUserByCondition" parameterType="com.gdou.gms.pojo.Condition" resultMap="OrderAndEquAndUserMap">
     select
       equ_order.*,
       equipment.*,
@@ -148,22 +148,13 @@
     where
       equ_order.equId = equipment.equId and
       equ_order.userId = userinfo.userId and
-	  equ_order.competId is null and
-      equipment.typeId = #{typeId,jdbcType=INTEGER};
-  </select>
-
-  <select id="selectOrderAndEquAndUserByStatus" parameterType="java.lang.Integer" resultMap="OrderAndEquAndUserMap">
-    select
-      equ_order.*,
-      equipment.*,
-      userinfo.*
-    from
-      equ_order, equipment, userinfo
-    where
-      equ_order.equId = equipment.equId and
-      equ_order.userId = userinfo.userId and
-	  equ_order.competId is null and
-      equ_order.status = #{status,jdbcType=INTEGER};
+	  equ_order.competId is null
+      <if test="condition.typeId != null">
+        and equipment.typeId = #{condition.typeId,jdbcType=INTEGER}
+      </if>
+      <if test="condition.status != null">
+        and equ_order.status = #{condition.status,jdbcType=INTEGER}
+      </if>
   </select>
 
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.EquOrderExample" resultMap="BaseResultMap">

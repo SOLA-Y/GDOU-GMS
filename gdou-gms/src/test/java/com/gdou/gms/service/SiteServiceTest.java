@@ -1,5 +1,6 @@
 package com.gdou.gms.service;
 
+import com.gdou.gms.pojo.Condition;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,8 +26,12 @@ class SiteServiceTest
     }
 
     @Test
-    void querySiteOrdersByStatus()
+    void querySiteOrdersByCondition()
     {
-        System.out.println(siteService.querySiteOrdersByStatus(1));
+        Condition condition = new Condition();
+        condition.setTypeId(2);
+        condition.setStatus(0);
+
+        System.out.println(siteService.querySiteOrdersByCondition(condition));
     }
 }

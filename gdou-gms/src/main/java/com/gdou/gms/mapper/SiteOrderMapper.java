@@ -1,5 +1,6 @@
 package com.gdou.gms.mapper;
 
+import com.gdou.gms.pojo.Condition;
 import com.gdou.gms.pojo.SiteOrder;
 import com.gdou.gms.pojo.SiteOrderExample;
 import java.util.List;
@@ -24,9 +25,7 @@ public interface SiteOrderMapper {
 
     SiteOrder selectOrderAndSiteAndUserById(Integer orderid);
 
-    List<SiteOrder> selectOrderAndSiteAndUserByType(Integer typeId);
-
-    List<SiteOrder> selectOrderAndSiteAndUserByStatus(Integer status);
+    List<SiteOrder> selectOrderAndSiteAndUserByCondition(@Param("condition") Condition condition);
 
     int updateByExampleSelective(@Param("record") SiteOrder record, @Param("example") SiteOrderExample example);
 

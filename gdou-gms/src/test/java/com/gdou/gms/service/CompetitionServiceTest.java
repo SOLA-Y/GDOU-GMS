@@ -1,11 +1,9 @@
 package com.gdou.gms.service;
 
-import cn.hutool.core.date.DateUtil;
+import com.gdou.gms.pojo.Condition;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class CompetitionServiceTest
@@ -21,13 +19,12 @@ class CompetitionServiceTest
     }
 
     @Test
-    void queryCompetitionsByStatus()
+    void queryCompetitionsByCondition()
     {
-        System.out.println("1=" + String.valueOf(DateUtil.current()));
-        // System.out.println("----------------------------------------");
-        // System.out.println(competitionService.queryCompetitionsByStatus(1));
-        // System.out.println("----------------------------------------");
-        System.out.println("2=" + String.valueOf(DateUtil.current()));
+        Condition condition = new Condition();
+        condition.setTypeId(1);
+        condition.setStatus(0);
 
+        System.out.println(competitionService.queryCompetitionsByCondition(condition));
     }
 }

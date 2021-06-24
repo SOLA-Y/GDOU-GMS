@@ -37,9 +37,7 @@ public interface EquipmentService
 
     public List<EquOrder> queryAllEquOrders();
 
-    public List<EquOrder> queryEquOrdersByType(Integer typeId);
-
-    public List<EquOrder> queryEquOrdersByStatus(Integer status);
+    public List<EquOrder> queryEquOrdersByCondition(Condition condition);
 
     public Boolean verifiedEquOrder(Integer equOrderId);
 

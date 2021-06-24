@@ -83,16 +83,10 @@ public class EquipmentController
         return equipmentService.queryAllEquOrders();
     }
 
-    @GetMapping("/queryEquOrdersByType")
-    public List<EquOrder> queryEquOrdersByType(@RequestParam("typeId") Integer typeId)
+    @PostMapping("/queryEquOrdersByCondition")
+    public List<EquOrder> queryEquOrdersByCondition(@RequestBody Condition condition)
     {
-        return equipmentService.queryEquOrdersByType(typeId);
-    }
-
-    @GetMapping("/queryEquOrdersByStatus")
-    public List<EquOrder> queryEquOrdersByStatus(@RequestParam("status") Integer status)
-    {
-        return equipmentService.queryEquOrdersByStatus(status);
+        return equipmentService.queryEquOrdersByCondition(condition);
     }
 
     // 器材预约审核通过

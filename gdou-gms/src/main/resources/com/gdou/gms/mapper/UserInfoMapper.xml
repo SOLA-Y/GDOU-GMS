@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    userId, username, gender, mail, phone, roleId
+    userId, username, userId, mail, phone, roleId
   </sql>
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.UserInfoExample" resultMap="BaseResultMap">
     select
@@ -101,9 +101,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gdou.gms.pojo.UserInfo">
-    insert into userinfo (userId, username, gender, 
+    insert into userinfo (userId, username, userId,
       mail, phone, roleId)
-    values (#{userid,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, 
+    values (#{userid,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{userId,jdbcType=CHAR},
       #{mail,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{roleid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gdou.gms.pojo.UserInfo">
@@ -115,8 +115,8 @@
       <if test="username != null">
         username,
       </if>
-      <if test="gender != null">
-        gender,
+      <if test="userId != null">
+        userId,
       </if>
       <if test="mail != null">
         mail,
@@ -135,8 +135,8 @@
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="gender != null">
-        #{gender,jdbcType=CHAR},
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
       </if>
       <if test="mail != null">
         #{mail,jdbcType=VARCHAR},
@@ -164,8 +164,8 @@
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.gender != null">
-        gender = #{record.gender,jdbcType=CHAR},
+      <if test="record.userId != null">
+        userId = #{record.userId,jdbcType=CHAR},
       </if>
       <if test="record.mail != null">
         mail = #{record.mail,jdbcType=VARCHAR},
@@ -185,7 +185,7 @@
     update userinfo
     set userId = #{record.userid,jdbcType=CHAR},
       username = #{record.username,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=CHAR},
+      userId = #{record.userId,jdbcType=CHAR},
       mail = #{record.mail,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=CHAR},
       roleId = #{record.roleid,jdbcType=INTEGER}
@@ -199,8 +199,8 @@
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="gender != null">
-        gender = #{gender,jdbcType=CHAR},
+      <if test="userId != null">
+        userId = #{userId,jdbcType=CHAR},
       </if>
       <if test="mail != null">
         mail = #{mail,jdbcType=VARCHAR},
@@ -217,7 +217,7 @@
   <update id="updateByPrimaryKey" parameterType="com.gdou.gms.pojo.UserInfo">
     update userinfo
     set username = #{username,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=CHAR},
+      userId = #{userId,jdbcType=CHAR},
       mail = #{mail,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=CHAR},
       roleId = #{roleid,jdbcType=INTEGER}

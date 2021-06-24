@@ -2,10 +2,14 @@ package com.gdou.gms.mapper;
 
 import com.gdou.gms.pojo.Competition;
 import com.gdou.gms.pojo.CompetitionExample;
+
 import java.util.List;
+
+import com.gdou.gms.pojo.Condition;
 import org.apache.ibatis.annotations.Param;
 
-public interface CompetitionMapper {
+public interface CompetitionMapper
+{
     long countByExample(CompetitionExample example);
 
     int deleteByExample(CompetitionExample example);
@@ -24,9 +28,7 @@ public interface CompetitionMapper {
 
     Competition selectCompetitionById(String competid);
 
-    List<Competition> selectCompetitionsByType(Integer typeId);
-
-    List<Competition> selectCompetitionsByStatus(Integer status);
+    List<Competition> selectCompetitionsByCondition(@Param("condition") Condition condition);
 
     int updateByExampleSelective(@Param("record") Competition record, @Param("example") CompetitionExample example);
 

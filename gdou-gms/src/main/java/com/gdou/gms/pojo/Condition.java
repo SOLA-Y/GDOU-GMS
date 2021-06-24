@@ -5,7 +5,7 @@ public class Condition
     // 用户条件
     private String username;
 
-    private String gender;
+    private String userId;
 
     private Integer roleid;
 
@@ -14,6 +14,9 @@ public class Condition
 
     // 器材余量
     private Integer left;
+
+    // 订单状态
+    private Integer status;
 
     // 场地条件、器材条件、赛事条件
     private Integer typeId;
@@ -28,14 +31,14 @@ public class Condition
         this.username = username;
     }
 
-    public String getGender()
+    public String getUserId()
     {
-        return gender;
+        return userId;
     }
 
-    public void setGender(String gender)
+    public void setUserId(String userId)
     {
-        this.gender = gender;
+        this.userId = userId;
     }
 
     public Integer getRoleid()
@@ -68,6 +71,16 @@ public class Condition
         this.left = left;
     }
 
+    public Integer getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(Integer status)
+    {
+        this.status = status;
+    }
+
     public Integer getTypeId()
     {
         return typeId;
@@ -83,7 +96,7 @@ public class Condition
     {
         return "Condition{" +
                 "username='" + username + '\'' +
-                ", gender='" + gender + '\'' +
+                ", userId='" + userId + '\'' +
                 ", roleid=" + roleid +
                 ", state=" + state +
                 ", left=" + left +
