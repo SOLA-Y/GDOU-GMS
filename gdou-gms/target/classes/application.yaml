@@ -14,6 +14,11 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
 
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
   # 配置邮箱基本信息
   mail:
     # 配置SMTP服务器地址

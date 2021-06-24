@@ -28,7 +28,7 @@
       <id column="siteId" jdbcType="INTEGER" property="siteid" />
       <result column="site_num" jdbcType="VARCHAR" property="siteNum" />
       <result column="site_area" jdbcType="VARCHAR" property="siteArea" />
-      <result column="feeId" jdbcType="INTEGER" property="feeid" />
+      <result column="site_fee" jdbcType="DECIMAL" property="siteFee" />
       <result column="state" jdbcType="INTEGER" property="state" />
       <result column="typeId" jdbcType="INTEGER" property="typeid" />
     </association>

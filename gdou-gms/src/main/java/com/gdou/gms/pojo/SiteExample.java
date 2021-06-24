@@ -1,5 +1,6 @@
 package com.gdou.gms.pojo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -304,63 +305,63 @@ public class SiteExample {
             return (Criteria) this;
         }
 
-        public Criteria andFeeidIsNull() {
-            addCriterion("feeId is null");
+        public Criteria andSiteFeeIsNull() {
+            addCriterion("site_fee is null");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidIsNotNull() {
-            addCriterion("feeId is not null");
+        public Criteria andSiteFeeIsNotNull() {
+            addCriterion("site_fee is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidEqualTo(Integer value) {
-            addCriterion("feeId =", value, "feeid");
+        public Criteria andSiteFeeEqualTo(BigDecimal value) {
+            addCriterion("site_fee =", value, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidNotEqualTo(Integer value) {
-            addCriterion("feeId <>", value, "feeid");
+        public Criteria andSiteFeeNotEqualTo(BigDecimal value) {
+            addCriterion("site_fee <>", value, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidGreaterThan(Integer value) {
-            addCriterion("feeId >", value, "feeid");
+        public Criteria andSiteFeeGreaterThan(BigDecimal value) {
+            addCriterion("site_fee >", value, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("feeId >=", value, "feeid");
+        public Criteria andSiteFeeGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("site_fee >=", value, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidLessThan(Integer value) {
-            addCriterion("feeId <", value, "feeid");
+        public Criteria andSiteFeeLessThan(BigDecimal value) {
+            addCriterion("site_fee <", value, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidLessThanOrEqualTo(Integer value) {
-            addCriterion("feeId <=", value, "feeid");
+        public Criteria andSiteFeeLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("site_fee <=", value, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidIn(List<Integer> values) {
-            addCriterion("feeId in", values, "feeid");
+        public Criteria andSiteFeeIn(List<BigDecimal> values) {
+            addCriterion("site_fee in", values, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidNotIn(List<Integer> values) {
-            addCriterion("feeId not in", values, "feeid");
+        public Criteria andSiteFeeNotIn(List<BigDecimal> values) {
+            addCriterion("site_fee not in", values, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidBetween(Integer value1, Integer value2) {
-            addCriterion("feeId between", value1, value2, "feeid");
+        public Criteria andSiteFeeBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("site_fee between", value1, value2, "siteFee");
             return (Criteria) this;
         }
 
-        public Criteria andFeeidNotBetween(Integer value1, Integer value2) {
-            addCriterion("feeId not between", value1, value2, "feeid");
+        public Criteria andSiteFeeNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("site_fee not between", value1, value2, "siteFee");
             return (Criteria) this;
         }
 

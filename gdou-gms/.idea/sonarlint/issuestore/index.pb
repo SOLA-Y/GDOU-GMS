@@ -23,10 +23,6 @@ d
 4src/main/java/com/gdou/gms/pojo/UserInfoExample.java,7\3\73ca27474e427e28f860db8bbc0e9af46ebe8dc9
 _
 /src/main/java/com/gdou/gms/pojo/Regulation.java,2\e\2ede653886effef1b8559b284f14781471d879de
-`
-0src/main/java/com/gdou/gms/pojo/SiteExample.java,c\4\c4aec38eb98cafa4072ef39236345e45a9c5c7ad
-^
-.src/main/java/com/gdou/gms/util/Generator.java,6\e\6ef75403ad955ee9ad6fa7fc79c78d06c63dea28
 e
 5src/main/java/com/gdou/gms/pojo/SiteOrderExample.java,7\d\7dbd8836fc8641059f92bf983ff62669b7de1089
 d
@@ -39,8 +35,6 @@ g
 7src/test/java/com/gdou/gms/service/SiteServiceTest.java,4\2\42ff1344336e1b283432e97609a45848d2b1508a
 a
 1src/main/java/com/gdou/gms/mapper/SiteMapper.java,3\7\37f0242750812ebf4f82f45f056a7d6183638b02
-Y
-)src/main/java/com/gdou/gms/pojo/Site.java,f\6\f6e1a88bc9ca45fec2c2c1b71d57e7b1bc2611bc
 h
 8src/main/java/com/gdou/gms/mapper/CompetitionMapper.java,d\a\da4314a6b4a09427c96076368dd3a9668aad2625
 i

@@ -5,13 +5,10 @@
     <id column="siteId" jdbcType="INTEGER" property="siteid" />
     <result column="site_num" jdbcType="VARCHAR" property="siteNum" />
     <result column="site_area" jdbcType="VARCHAR" property="siteArea" />
-    <result column="feeId" jdbcType="INTEGER" property="feeid" />
+    <result column="site_fee" jdbcType="DECIMAL" property="siteFee" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="typeId" jdbcType="INTEGER" property="typeid" />
   </resultMap>
-
-
-
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -71,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    siteId, site_num, site_area, feeId, state, typeId
+    siteId, site_num, site_area, site_fee, state, typeId
   </sql>
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.SiteExample" resultMap="BaseResultMap">
     select
@@ -105,10 +102,10 @@
   </delete>
   <insert id="insert" parameterType="com.gdou.gms.pojo.Site">
     insert into site (siteId, site_num, site_area, 
-      feeId, state, typeId
+      site_fee, state, typeId
       )
     values (#{siteid,jdbcType=INTEGER}, #{siteNum,jdbcType=VARCHAR}, #{siteArea,jdbcType=VARCHAR}, 
-      #{feeid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}
+      #{siteFee,jdbcType=DECIMAL}, #{state,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gdou.gms.pojo.Site">
@@ -123,8 +120,8 @@
       <if test="siteArea != null">
         site_area,
       </if>
-      <if test="feeid != null">
-        feeId,
+      <if test="siteFee != null">
+        site_fee,
       </if>
       <if test="state != null">
         state,
@@ -143,8 +140,8 @@
       <if test="siteArea != null">
         #{siteArea,jdbcType=VARCHAR},
       </if>
-      <if test="feeid != null">
-        #{feeid,jdbcType=INTEGER},
+      <if test="siteFee != null">
+        #{siteFee,jdbcType=DECIMAL},
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
@@ -172,8 +169,8 @@
       <if test="record.siteArea != null">
         site_area = #{record.siteArea,jdbcType=VARCHAR},
       </if>
-      <if test="record.feeid != null">
-        feeId = #{record.feeid,jdbcType=INTEGER},
+      <if test="record.siteFee != null">
+        site_fee = #{record.siteFee,jdbcType=DECIMAL},
       </if>
       <if test="record.state != null">
         state = #{record.state,jdbcType=INTEGER},
@@ -191,7 +188,7 @@
     set siteId = #{record.siteid,jdbcType=INTEGER},
       site_num = #{record.siteNum,jdbcType=VARCHAR},
       site_area = #{record.siteArea,jdbcType=VARCHAR},
-      feeId = #{record.feeid,jdbcType=INTEGER},
+      site_fee = #{record.siteFee,jdbcType=DECIMAL},
       state = #{record.state,jdbcType=INTEGER},
       typeId = #{record.typeid,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -207,8 +204,8 @@
       <if test="siteArea != null">
         site_area = #{siteArea,jdbcType=VARCHAR},
       </if>
-      <if test="feeid != null">
-        feeId = #{feeid,jdbcType=INTEGER},
+      <if test="siteFee != null">
+        site_fee = #{siteFee,jdbcType=DECIMAL},
       </if>
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
@@ -223,7 +220,7 @@
     update site
     set site_num = #{siteNum,jdbcType=VARCHAR},
       site_area = #{siteArea,jdbcType=VARCHAR},
-      feeId = #{feeid,jdbcType=INTEGER},
+      site_fee = #{siteFee,jdbcType=DECIMAL},
       state = #{state,jdbcType=INTEGER},
       typeId = #{typeid,jdbcType=INTEGER}
     where siteId = #{siteid,jdbcType=INTEGER}

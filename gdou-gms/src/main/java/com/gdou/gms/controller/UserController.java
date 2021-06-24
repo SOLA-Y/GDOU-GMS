@@ -113,7 +113,7 @@ public class UserController
     }
 
     // 用户自己更新本人信息
-    @PostMapping("/updateUserInfo")
+    @PostMapping("/updateUserInfoBySelf")
     public Object updateUserInfoBySelf(@RequestBody UserInfo userInfo, @RequestParam("code") String code)
     {
         JSONObject jsonObject = new JSONObject();
@@ -135,7 +135,7 @@ public class UserController
     }
 
     // 管理员更新用户信息
-    @PostMapping("/updateUserInfo")
+    @PostMapping("/updateUserInfoByAdmin")
     public Boolean updateUserInfoByAdmin(@RequestBody UserInfo userInfo)
     {
         return userService.updateUserInfo(userInfo);
