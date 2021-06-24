@@ -1,6 +1,5 @@
 package com.gdou.gms.service.Impl;
 
-import cn.hutool.core.util.RandomUtil;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +8,13 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
+@Async
 @Service
-@EnableAsync
 @PropertySource(value = {"classpath:mail.properties"})
 public class MailServiceImpl implements MailService
 {
@@ -29,6 +30,10 @@ public class MailServiceImpl implements MailService
     private String setContent;
     @Value("${mail.content.remove}")
     private String removeContent;
+    @Value("${main.content.validate.prefix}")
+    private String validatePrefixContent;
+    @Value("${main.content.validate.suffix}")
+    private String validateSuffixContent;
 
     @Override
     public Boolean sendSetMail(UserInfo userInfo)
@@ -64,7 +69,6 @@ public class MailServiceImpl implements MailService
             mailMessage.setText(userInfo.getUsername() + removeContent + from);
             javaMailSender.send(mailMessage);
 
-            System.out.println("发送成功");
             return true;
         } catch (MailException e)
         {
@@ -73,16 +77,23 @@ public class MailServiceImpl implements MailService
     }
 
     @Override
-    public String sendRandomStringMail(UserInfo userInfo)
+    public Boolean sendValidateCodeMail(UserInfo userInfo, String validateCode, Date sendTime)
     {
-        String randomChars = "";
-        for (int i = 0; i < 6; i++)
+        try
         {
-            randomChars += RandomUtil.randomChar();
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setFrom(from);
+            mailMessage.setTo(userInfo.getMail());
+            mailMessage.setSubject(subject);
+            mailMessage.setText(userInfo.getUsername() + validatePrefixContent + validateCode + validateSuffixContent);
+            javaMailSender.send(mailMessage);
+
+            return true;
+        } catch (MailException e)
+        {
+            return false;
         }
 
-        return randomChars;
     }
-
 
 }

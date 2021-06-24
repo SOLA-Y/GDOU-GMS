@@ -7,12 +7,14 @@ import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.service.MailService;
 import com.gdou.gms.service.UserService;
 import com.gdou.gms.util.JwtUtil;
+import com.gdou.gms.util.RandomCharUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -25,6 +27,10 @@ public class UserController
 
     @Autowired
     private MailService mailService;
+
+    private String validateCode;
+
+    private Date sendTime;
 
     // 登录
     @PostMapping("/login")
@@ -108,9 +114,33 @@ public class UserController
 
     // 更新用户信息
     @PostMapping("/updateUserInfo")
-    public Boolean updateUserInfo(@RequestBody UserInfo userInfo)
+    public Object updateUserInfo(@RequestBody UserInfo userInfo, @RequestParam("code") String code)
     {
+        JSONObject jsonObject = new JSONObject();
+
+        if (RandomCharUtil.getMinute(sendTime, new Date()) > 10)
+        {
+            // 验证码失效
+            jsonObject.putOpt("validateCode", "验证码失效");
+            return jsonObject;
+        }
+        if (!validateCode.equals(code))
+        {
+            // 验证码错误
+            jsonObject.putOpt("validateCode", "验证码错误");
+            return jsonObject;
+        }
+
         return userService.updateUserInfo(userInfo);
+    }
+
+    // 发送验证码信息
+    @PostMapping("/sendValidateCodeMail")
+    public Boolean sendValidateCodeMail(@RequestBody UserInfo userInfo)
+    {
+        validateCode = RandomCharUtil.createValidateCode();
+        sendTime = new Date();
+        return mailService.sendValidateCodeMail(userInfo, validateCode, sendTime);
     }
 
     // 查询一个用户的信息

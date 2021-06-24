@@ -28,10 +28,11 @@ public class EquipmentServiceImpl implements EquipmentService
 
         criteria.andTypeidEqualTo(equipment.getTypeid());
 
-        Equipment dbEquipment = equipmentMapper.selectByExample(example).get(0);
+        List<Equipment> equipmentList = equipmentMapper.selectByExample(example);
 
-        if (dbEquipment != null)
+        if (equipmentList.size() != 0)
         {
+            Equipment dbEquipment = equipmentList.get(0);
             dbEquipment.setTotalCost(dbEquipment.getTotalCost().add(equipment.getTotalCost()));
             dbEquipment.setQuantity(dbEquipment.getQuantity() + equipment.getQuantity());
             dbEquipment.setLeft(dbEquipment.getLeft() + equipment.getLeft());

@@ -32,7 +32,7 @@
       <result column="equ_fee" jdbcType="DECIMAL" property="equFee" />
       <result column="total_cost" jdbcType="DECIMAL" property="totalCost" />
       <result column="quantity" jdbcType="INTEGER" property="quantity" />
-      <result column="left" jdbcType="INTEGER" property="left" />
+      <result column="equ_left" jdbcType="INTEGER" property="left" />
       <result column="buy_date" jdbcType="DATE" property="buyDate" />
       <result column="adminId" jdbcType="CHAR" property="adminid" />
       <result column="typeId" jdbcType="INTEGER" property="typeid" />

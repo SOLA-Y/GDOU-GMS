@@ -2,6 +2,8 @@ package com.gdou.gms.service;
 
 import com.gdou.gms.pojo.UserInfo;
 
+import java.util.Date;
+
 public interface MailService
 {
 
@@ -9,6 +11,6 @@ public interface MailService
     
     public Boolean sendRemoveMail(UserInfo userInfo);
 
-    public String sendRandomStringMail(UserInfo userInfo);
+    public Boolean sendValidateCodeMail(UserInfo userInfo, String validateCode, Date sendTime);
 
 }
