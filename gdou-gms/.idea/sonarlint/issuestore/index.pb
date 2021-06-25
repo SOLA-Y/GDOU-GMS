@@ -1,6 +1,4 @@
 
-g
-7src/main/java/com/gdou/gms/pojo/CompetitionExample.java,7\6\766fa99df698a874a17b5ea5ed449141f27b0c91
 e
 5src/main/java/com/gdou/gms/mapper/UserInfoMapper.java,4\4\441ab1c122e98fa200c8f55fe1c07d9bc1542d7d
 a
@@ -65,9 +63,3 @@ a
 1src/main/java/com/gdou/gms/mapper/SiteMapper.java,3\7\37f0242750812ebf4f82f45f056a7d6183638b02
 c
 3src/main/java/com/gdou/gms/util/RandomCharUtil.java,d\7\d7c0d01e8a57a564c7b168a8a63a0c18f5b455d3
-`
-0src/main/java/com/gdou/gms/pojo/Competition.java,7\0\70afff1dde7a02b9ed8930001369e66716083a5b
-^
-.src/main/java/com/gdou/gms/pojo/Condition.java,d\f\dfea0a0d6229ebf2ea378da8e5b80824f5638629
-`
-0src/main/java/com/gdou/gms/util/ExampleUtil.java,9\a\9aa59d6fc27fa540745fa179d5bfc658db00a9cb

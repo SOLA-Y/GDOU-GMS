@@ -38,14 +38,18 @@ public class LoginInterceptor implements HandlerInterceptor
 
         String token = request.getHeader("token");
 
+        System.out.println("token=" + token);
+
         // 验证token有效性
         if (JwtUtil.checkToken(token))
         {
+            System.out.println("可以");
             return true;
         }
         else
         {
-            response.setHeader("401", "TokenDisable");
+            System.out.println("不可以");
+            response.setHeader("Token", "Disable");
             return false;
         }
 

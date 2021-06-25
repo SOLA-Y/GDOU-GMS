@@ -56,4 +56,14 @@ class EquipmentServiceTest
     {
         System.out.println(equipmentService.queryEquOrdersByUserId("201811701311"));
     }
+
+    @Test
+    void queryEquipmentsByCondition()
+    {
+        Condition condition = new Condition();
+        condition.setTypeId(1);
+
+        System.out.println(equipmentService.queryEquipmentsByCondition(condition));
+
+    }
 }
