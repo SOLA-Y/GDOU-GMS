@@ -27,6 +27,8 @@ public interface SiteOrderMapper {
 
     List<SiteOrder> selectOrderAndSiteAndUserByCondition(@Param("condition") Condition condition);
 
+    List<SiteOrder> selectOrderAndSiteAndUserByUserId(String userId);
+
     int updateByExampleSelective(@Param("record") SiteOrder record, @Param("example") SiteOrderExample example);
 
     int updateByExample(@Param("record") SiteOrder record, @Param("example") SiteOrderExample example);

@@ -48,7 +48,6 @@ public class MailServiceImpl implements MailService
             mailMessage.setText(userInfo.getUsername() + setContent + from);
             javaMailSender.send(mailMessage);
 
-            System.out.println("发送成功");
             return true;
         } catch (MailException e)
         {

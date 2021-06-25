@@ -214,6 +214,25 @@
       </if>
   </select>
 
+  <select id="selectCompetitionsByUserId" parameterType="java.lang.String" resultMap="CompetitionMap">
+  select
+    competition.*,
+    site_order.*,
+    site.*,
+    equ_order.*,
+    equipment.*,
+    userinfo.*
+  from
+    competition, site_order, site, equ_order, equipment, userinfo
+  where
+    competition.sorder_id = site_order.orderId and
+    competition.siteId = site.siteId and
+    competition.eorder_id = equ_order.orderId and
+    competition.equId = equipment.equId and
+    competition.userId = userinfo.userId and
+    competition.userId = #{userId,jdbcType=CHAR}
+  </select>
+
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.CompetitionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

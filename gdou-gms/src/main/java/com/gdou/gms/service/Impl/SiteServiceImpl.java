@@ -146,6 +146,12 @@ public class SiteServiceImpl implements SiteService
         return siteOrderMapper.selectOrderAndSiteAndUserByCondition(condition);
     }
 
+    @Override
+    public List<SiteOrder> querySiteOrdersByUserId(String userId)
+    {
+        return siteOrderMapper.selectOrderAndSiteAndUserByUserId(userId);
+    }
+
     @Transactional
     @Override
     public Boolean verifiedSiteOrder(Integer siteOrderId)

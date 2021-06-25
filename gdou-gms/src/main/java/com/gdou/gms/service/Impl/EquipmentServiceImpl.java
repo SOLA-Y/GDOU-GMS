@@ -166,6 +166,12 @@ public class EquipmentServiceImpl implements EquipmentService
         return equOrderMapper.selectOrderAndEquAndUserByCondition(condition);
     }
 
+    @Override
+    public List<EquOrder> queryEquOrdersByUserId(String userId)
+    {
+        return equOrderMapper.selectOrderAndEquAndUserByUserId(userId);
+    }
+
     @Transactional
     @Override
     public Boolean verifiedEquOrder(Integer equOrderId)

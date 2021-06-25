@@ -39,6 +39,8 @@ public interface SiteService
 
     public List<SiteOrder> querySiteOrdersByCondition(Condition condition);
 
+    public List<SiteOrder> querySiteOrdersByUserId(String userId);
+
     public Boolean verifiedSiteOrder(Integer siteOrderId);
 
 }

@@ -47,4 +47,10 @@ public class CompetitionServiceImpl implements CompetitionService
         return competitionMapper.selectCompetitionsByCondition(condition);
     }
 
+    @Override
+    public List<Competition> queryCompetitionsByUserId(String userId)
+    {
+        return competitionMapper.selectCompetitionsByUserId(userId);
+    }
+
 }

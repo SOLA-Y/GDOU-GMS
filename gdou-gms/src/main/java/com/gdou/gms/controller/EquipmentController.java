@@ -89,6 +89,12 @@ public class EquipmentController
         return equipmentService.queryEquOrdersByCondition(condition);
     }
 
+    @GetMapping("/queryEquOrdersByCondition")
+    public List<EquOrder> queryEquOrdersByUserId(@RequestParam("userId") String userId)
+    {
+        return equipmentService.queryEquOrdersByUserId(userId);
+    }
+
     // 器材预约审核通过
     @GetMapping("/verifiedEquOrder")
     public Boolean verifiedEquOrder(@RequestParam("equOrderId") Integer equOrderId)

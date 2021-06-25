@@ -157,6 +157,21 @@
       </if>
   </select>
 
+  <select id="selectOrderAndEquAndUserByUserId" parameterType="java.lang.String" resultMap="OrderAndEquAndUserMap">
+    select
+      equ_order.*,
+      equipment.*,
+      userinfo.*
+    from
+      equ_order, equipment, userinfo
+    where
+      equ_order.equId = equipment.equId and
+      equ_order.userId = userinfo.userId and
+	  equ_order.competId is null and
+	  equ_order.userId = #{userId,jdbcType=CHAR}
+  </select>
+
+
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.EquOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

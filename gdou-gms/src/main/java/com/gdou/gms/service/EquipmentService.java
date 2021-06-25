@@ -39,6 +39,8 @@ public interface EquipmentService
 
     public List<EquOrder> queryEquOrdersByCondition(Condition condition);
 
+    public List<EquOrder> queryEquOrdersByUserId(String userId);
+
     public Boolean verifiedEquOrder(Integer equOrderId);
 
 }

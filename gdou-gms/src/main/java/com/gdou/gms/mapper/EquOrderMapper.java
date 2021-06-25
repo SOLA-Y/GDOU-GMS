@@ -27,6 +27,8 @@ public interface EquOrderMapper {
 
     List<EquOrder> selectOrderAndEquAndUserByCondition(@Param("condition") Condition condition);
 
+    List<EquOrder> selectOrderAndEquAndUserByUserId(String userId);
+
     int updateByExampleSelective(@Param("record") EquOrder record, @Param("example") EquOrderExample example);
 
     int updateByExample(@Param("record") EquOrder record, @Param("example") EquOrderExample example);

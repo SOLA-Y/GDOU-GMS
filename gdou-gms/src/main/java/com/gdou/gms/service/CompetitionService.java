@@ -18,4 +18,6 @@ public interface CompetitionService
 
     public List<Competition> queryCompetitionsByCondition(Condition condition);
 
+    public List<Competition> queryCompetitionsByUserId(String userId);
+
 }

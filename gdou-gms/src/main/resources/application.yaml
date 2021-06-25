@@ -1,5 +1,8 @@
 server:
   port: 8888
+  servlet:
+    encoding:
+      enabled: true
 
 spring:
   jackson:

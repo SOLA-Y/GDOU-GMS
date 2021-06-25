@@ -76,6 +76,13 @@ public class CompetitionController
         return competitionService.queryCompetition(competitionId);
     }
 
+    // 根据userid查询赛事
+    @GetMapping("/queryCompetitionByUserId")
+    public List<Competition> queryCompetitionByUserId(@RequestParam("userId") String userId)
+    {
+        return competitionService.queryCompetitionsByUserId(userId);
+    }
+
     // 查询所有赛事
     @GetMapping("/queryAllCompetitions")
     public List<Competition> queryAllCompetitions()

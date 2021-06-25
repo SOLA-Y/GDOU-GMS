@@ -83,6 +83,12 @@ public class SiteController
         return siteService.querySiteOrdersByCondition(condition);
     }
 
+    @GetMapping("/querySiteOrdersByUserId")
+    public List<SiteOrder> querySiteOrdersByUserId(@RequestParam("userId") String userId)
+    {
+        return siteService.querySiteOrdersByUserId(userId);
+    }
+
     // 场地预约审核通过
     @GetMapping("/verifiedSiteOrder")
     public Boolean verifiedSiteOrder(@RequestParam("siteOrderId") Integer siteOrderId)

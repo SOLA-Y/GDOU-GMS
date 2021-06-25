@@ -50,4 +50,10 @@ class EquipmentServiceTest
 
         System.out.println(equipmentService.queryEquOrdersByCondition(condition));
     }
+
+    @Test
+    void queryEquOrdersByUserId()
+    {
+        System.out.println(equipmentService.queryEquOrdersByUserId("201811701311"));
+    }
 }

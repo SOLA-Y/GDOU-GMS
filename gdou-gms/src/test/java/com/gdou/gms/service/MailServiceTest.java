@@ -1,11 +1,13 @@
 package com.gdou.gms.service;
 
-import cn.hutool.json.JSONObject;
 import com.gdou.gms.pojo.UserInfo;
 import com.gdou.gms.util.RandomCharUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @SpringBootTest
 class MailServiceTest
@@ -14,21 +16,44 @@ class MailServiceTest
     @Autowired
     private MailService mailService;
 
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+
+    @Value("${mail.from}")
+    private String from;
+    @Value("${mail.subject}")
+    private String subject;
+    @Value("${mail.content.set}")
+    private String setContent;
+    @Value("${mail.content.remove}")
+    private String removeContent;
+    @Value("${main.content.validate.prefix}")
+    private String validatePrefixContent;
+    @Value("${main.content.validate.suffix}")
+    private String validateSuffixContent;
+
+    @Test
     public void test()
     {
-        for (int i = 0; i < 99999999; i++)
-        {
+        UserInfo userInfo = new UserInfo(null, "甘燿生", null, "1229655503@qq.com", null, null);
 
-        }
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setFrom(from);
+        mailMessage.setTo(userInfo.getMail());
+        mailMessage.setCc(from);
+        mailMessage.setSubject(subject);
+        mailMessage.setText(userInfo.getUsername() + setContent + from);
+        javaMailSender.send(mailMessage);
 
-        System.out.println("打印成功");
+        System.out.println("发送成功");
+
     }
 
     @Test
     void sendAddMail()
     {
-        UserInfo userInfo = new UserInfo(null, "林志宏", null, "refg2398467215@qq.com", null, null);
-        // mailService.sendSetMail(userInfo);
+        UserInfo userInfo = new UserInfo(null, "甘燿生", null, "1229655503@qq.com", null, null);
 
         try
         {
@@ -37,7 +62,7 @@ class MailServiceTest
 
         } catch (Exception e)
         {
-            System.out.println("发送失败");
+            System.out.println("添加失败");
         }
 
     }

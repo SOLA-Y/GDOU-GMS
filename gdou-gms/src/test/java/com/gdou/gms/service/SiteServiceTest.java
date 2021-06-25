@@ -34,4 +34,10 @@ class SiteServiceTest
 
         System.out.println(siteService.querySiteOrdersByCondition(condition));
     }
+
+    @Test
+    void querySiteOrdersByUserId()
+    {
+        System.out.println(siteService.querySiteOrdersByUserId("201811701311"));
+    }
 }

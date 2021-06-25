@@ -30,6 +30,8 @@ public interface CompetitionMapper
 
     List<Competition> selectCompetitionsByCondition(@Param("condition") Condition condition);
 
+    List<Competition> selectCompetitionsByUserId(String userId);
+
     int updateByExampleSelective(@Param("record") Competition record, @Param("example") CompetitionExample example);
 
     int updateByExample(@Param("record") Competition record, @Param("example") CompetitionExample example);

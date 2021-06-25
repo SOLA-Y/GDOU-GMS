@@ -27,4 +27,10 @@ class CompetitionServiceTest
 
         System.out.println(competitionService.queryCompetitionsByCondition(condition));
     }
+
+    @Test
+    void queryCompetitionsByUserId()
+    {
+        System.out.println(competitionService.queryCompetitionsByUserId("201811701310"));
+    }
 }

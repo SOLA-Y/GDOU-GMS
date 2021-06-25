@@ -150,6 +150,20 @@
       </if>
   </select>
 
+  <select id="selectOrderAndSiteAndUserByUserId" parameterType="java.lang.String" resultMap="OrderAndSiteAndUserMap">
+    select
+      site_order.*,
+      site.*,
+      userinfo.*
+    from
+      site_order, site, userinfo
+    where
+      site_order.siteId = site.siteId and
+      site_order.userId = userinfo.userId and
+      site_order.competId is null and
+      site_order.userId = #{userId,jdbcType=CHAR};
+  </select>
+
   <select id="selectByExample" parameterType="com.gdou.gms.pojo.SiteOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
