@@ -60,7 +60,7 @@ public class JwtUtil
         try
         {
             // 判断这个解析操作是否正常，如果正常则说明token有效，抛异常则说明token失效
-            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(signature).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(signature).parseClaimsJws(token);
         } catch (Exception e)
         {
             return false;

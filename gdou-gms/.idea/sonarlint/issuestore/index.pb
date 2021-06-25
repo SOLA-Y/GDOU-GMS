@@ -29,12 +29,8 @@ d
 .src/main/java/com/gdou/gms/pojo/SiteOrder.java,8\3\830b7b4f826f625c22120a3e92e88e4b3a923bc9
 ]
 -src/main/java/com/gdou/gms/pojo/EquOrder.java,a\e\aeef4afea314fb1f6b4d957d51d576c04e9ed83c
-i
-9src/test/java/com/gdou/gms/mapper/UserInfoMapperTest.java,e\1\e17022a6da1b9f1f137f2718ab2d546a764be7fb
 Y
 )src/main/java/com/gdou/gms/pojo/User.java,4\e\4e84660c895866c2eb81026b77aaf182f44d2ba6
-l
-<src/main/java/com/gdou/gms/interceptor/LoginInterceptor.java,0\7\070be6955eba872acda0abf2f0ccfcfbcb8541f8
 v
 F.idea/libraries/Maven__com_sun_activation_jakarta_activation_1_2_2.xml,e\1\e11341d3ba4ad50769e9b2a775f4ef6e765e0f51
 j
@@ -43,14 +39,10 @@ j
 f.idea/libraries/Maven__org_springframework_boot_spring_boot_configuration_processor_2_3_11_RELEASE.xml,1\d\1dbf30e979493274de9c2567f293d707e54473dd
 ‹
 [.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_2_3_11_RELEASE.xml,2\c\2cfdf1ad188786d9d9157c169608545d6d614723
-`
-0src/main/java/com/gdou/gms/config/WebConfig.java,2\d\2d2578b93d9d89953aa30da1864c4248412bcf55
 r
 Bsrc/main/java/com/gdou/gms/service/Impl/RegulationServiceImpl.java,3\c\3c89bede179eea181b313c4a2925176fa5b11e35
 i
 9src/main/java/com/gdou/gms/service/RegulationService.java,b\4\b4dd6c95d25a189a891935c939b9621b1ba98ea1
-g
-7src/test/java/com/gdou/gms/service/UserServiceTest.java,3\c\3c5401cbd5a413724f2674b913d19dd8958b2048
 g
 7src/main/java/com/gdou/gms/mapper/RegulationMapper.java,f\d\fd540b4225714a360e10a2d4e5a94604a980c957
 f
@@ -73,12 +65,8 @@ K.idea/libraries/Maven__org_springframework_spring_context_support_5_3_6.xml,b\
 0src/main/java/com/gdou/gms/pojo/SiteExample.java,c\4\c4aec38eb98cafa4072ef39236345e45a9c5c7ad
 o
 ?src/main/java/com/gdou/gms/controller/RegulationController.java,6\1\61ce1abde7cd8bec8695c4e2928f62a26d0e1d40
-^
-.src/main/java/com/gdou/gms/util/Generator.java,6\e\6ef75403ad955ee9ad6fa7fc79c78d06c63dea28
 a
 1src/main/java/com/gdou/gms/mapper/SiteMapper.java,3\7\37f0242750812ebf4f82f45f056a7d6183638b02
-\
-,src/main/java/com/gdou/gms/util/JwtUtil.java,3\b\3bd5dab1451c384a75b34def1f35a9ca9b7e2a49
 c
 3src/main/java/com/gdou/gms/util/RandomCharUtil.java,d\7\d7c0d01e8a57a564c7b168a8a63a0c18f5b455d3
 `
@@ -87,5 +75,3 @@ c
 .src/main/java/com/gdou/gms/pojo/Condition.java,d\f\dfea0a0d6229ebf2ea378da8e5b80824f5638629
 `
 0src/main/java/com/gdou/gms/util/ExampleUtil.java,9\a\9aa59d6fc27fa540745fa179d5bfc658db00a9cb
-]
--src/main/java/com/gdou/gms/pojo/UserInfo.java,3\5\35830b0738229d6266e07a015672de889899ebde

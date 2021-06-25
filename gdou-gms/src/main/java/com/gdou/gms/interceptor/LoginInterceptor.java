@@ -47,7 +47,6 @@ public class LoginInterceptor implements HandlerInterceptor
         {
             response.setHeader("401", "TokenDisable");
             return false;
-            // throw new RuntimeException("401401401401401401401401401401");
         }
 
     }

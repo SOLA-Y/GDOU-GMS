@@ -92,12 +92,6 @@ public class SiteServiceImpl implements SiteService
     }
 
     @Override
-    public Boolean reservedSite(SiteOrder siteOrder)
-    {
-        return null;
-    }
-
-    @Override
     public Boolean deleteSiteOrder(Integer siteOrderId)
     {
         int delete = siteOrderMapper.deleteByPrimaryKey(siteOrderId);

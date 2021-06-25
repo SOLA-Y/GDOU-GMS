@@ -21,10 +21,7 @@ public class WebConfig implements WebMvcConfigurer
     public void addInterceptors(InterceptorRegistry registry)
     {
         List<String> excludePaths = new ArrayList<>();
-        excludePaths.add("/getMsg");
         excludePaths.add("/login");
-        excludePaths.add("/checkToken");
-        // excludePaths.add("/js/**");
 
         // addInterceptor添加拦截器，addPathPatterns配置拦截的路径，拦截所有（包括静态资源），excludePathPatterns配置放行的路径、静态资源
         // registry.addInterceptor(new LoginInterceptor())

@@ -25,8 +25,6 @@ public interface SiteService
 
     public Boolean addSiteOrder(SiteOrder siteOrder);
 
-    public Boolean reservedSite(SiteOrder siteOrder);
-
     public Boolean deleteSiteOrder(Integer siteOrderId);
 
     public Boolean deleteSiteOrderByCompetId(String competitionId);
