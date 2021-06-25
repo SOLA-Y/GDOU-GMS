@@ -103,18 +103,16 @@ public class UserController
     }
 
     // 更新密码
-    @PostMapping("/updatePassword")
-    public Boolean updatePassword(@RequestParam(value = "originalPwd") String originalPwd, @RequestBody User user)
+    @GetMapping("/updatePassword")
+    public Boolean updatePassword(@RequestParam("originalPwd") String originalPwd, @RequestParam("userId") String userId, @RequestParam("newPwd") String newPwd)
     {
-        System.out.println("原密码" + originalPwd);
-        System.out.println("用户userId + 新密码" + user);
-
+        User user = new User(userId, newPwd, null);
         return userService.updatePassword(originalPwd, user);
     }
 
     // 用户自己更新本人信息
     @PostMapping("/updateUserInfoBySelf")
-    public Object updateUserInfoBySelf(@RequestBody UserInfo userInfo, @RequestParam("code") String code)
+    public Object updateUserInfoBySelf(@RequestParam("userId") String userId, @RequestParam("mail") String mail, @RequestParam("phone") String phone, @RequestParam("code") String code)
     {
         JSONObject jsonObject = new JSONObject();
 
@@ -130,6 +128,8 @@ public class UserController
             jsonObject.putOpt("validateCode", "验证码错误");
             return jsonObject;
         }
+
+        UserInfo userInfo = new UserInfo(userId, null, null, mail, phone, null);
 
         return userService.updateUserInfo(userInfo);
     }

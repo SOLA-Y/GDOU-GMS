@@ -49,10 +49,6 @@ f
 6src/main/java/com/gdou/gms/mapper/EquipmentMapper.java,4\2\42913d5495de2f66e3766b946d19702356eb2956
 ^
 .src/main/java/com/gdou/gms/pojo/Equipment.java,8\c\8c0eedb7270a82ee4d6242cdadaed4c2976fff25
-c
-3src/main/java/com/gdou/gms/service/UserService.java,8\e\8ead9c5a85ab72d12cdedd51c36dddfd1631c8bf
-l
-<src/main/java/com/gdou/gms/service/Impl/UserServiceImpl.java,8\7\87d61702807c0244193366512bb3cff30844d0c5
 m
 =src/test/java/com/gdou/gms/service/RegulationServiceTest.java,a\a\aaffdadfb39441ccbe9c675a63e85b42cccf5d09
 <
