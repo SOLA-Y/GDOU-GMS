@@ -124,8 +124,6 @@ public class UserServiceImpl implements UserService
     @Override
     public List<UserInfo> queryUsersByCondition(Condition condition)
     {
-        System.out.println(condition);
-
         UserInfoExample example = ExampleUtil.createUserInfoExample(condition);
         return userInfoMapper.selectByExample(example);
     }

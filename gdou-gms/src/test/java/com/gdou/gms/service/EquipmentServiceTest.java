@@ -54,7 +54,7 @@ class EquipmentServiceTest
     @Test
     void queryEquOrdersByUserId()
     {
-        System.out.println(equipmentService.queryEquOrdersByUserId("201811701311"));
+        System.out.println(equipmentService.queryEquOrdersByUserId("201820182018"));
     }
 
     @Test

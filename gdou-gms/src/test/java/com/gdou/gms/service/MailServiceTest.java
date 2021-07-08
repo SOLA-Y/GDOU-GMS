@@ -36,7 +36,7 @@ class MailServiceTest
     @Test
     public void test()
     {
-        UserInfo userInfo = new UserInfo(null, "甘燿生", null, "1229655503@qq.com", null, null);
+        UserInfo userInfo = new UserInfo(null, "小生", null, "123456789@qq.com", null, null);
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(from);
@@ -53,7 +53,7 @@ class MailServiceTest
     @Test
     void sendAddMail()
     {
-        UserInfo userInfo = new UserInfo(null, "甘燿生", null, "1229655503@qq.com", null, null);
+        UserInfo userInfo = new UserInfo(null, "小生", null, "123456789@qq.com", null, null);
 
         try
         {
@@ -70,14 +70,14 @@ class MailServiceTest
     @Test
     void sendRemoveMail()
     {
-        UserInfo userInfo = new UserInfo(null, "林志宏", null, "refg2398467215@qq.com", null, null);
+        UserInfo userInfo = new UserInfo(null, "小生", null, "123456789@qq.com", null, null);
         mailService.sendRemoveMail(userInfo);
     }
 
     @Test
     void sendRandomStringMail()
     {
-        // UserInfo userInfo = new UserInfo(null, "林志宏", null, "refg2398467215@qq.com", null, null);
+        // UserInfo userInfo = new UserInfo(null, "小生", null, "123456789@qq.com", null, null);
         // System.out.println("最后验证码：" + mailService.sendValidateCodeMail(null));
 
         System.out.println(RandomCharUtil.createValidateCode());

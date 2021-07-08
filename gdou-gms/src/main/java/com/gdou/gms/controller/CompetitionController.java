@@ -45,7 +45,7 @@ public class CompetitionController
                 competition.setSorderId(siteOrder1.getOrderid());
 
                 EquOrder equOrder1 = equipmentService.queryEquOrderByCompetId(competitionId);
-                competition.setEorderId(equOrder1.getEquid());
+                competition.setEorderId(equOrder1.getOrderid());
 
                 competition.setCompetid(competitionId);
                 return competitionService.createCompetition(competition);
@@ -102,6 +102,7 @@ public class CompetitionController
     public Boolean verifiedCompetition(@RequestParam("competid") String competitionId)
     {
         Competition competition = competitionService.queryCompetition(competitionId);
+
         Boolean verifiedSiteOrder = siteService.verifiedSiteOrder(competition.getSorderId());
         Boolean verifiedEquOrder = equipmentService.verifiedEquOrder(competition.getEorderId());
 

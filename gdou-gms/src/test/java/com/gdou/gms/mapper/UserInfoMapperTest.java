@@ -42,7 +42,7 @@ class UserInfoMapperTest
     void testToken()
     {
         JwtUtil jwtUtil = new JwtUtil();
-        String token = jwtUtil.createToken(new UserInfo("201811701307", null, null, null, null, 3));
+        String token = jwtUtil.createToken(new UserInfo("201820182018", null, null, null, null, 3));
 
         System.out.println(token);
 
@@ -98,7 +98,7 @@ class UserInfoMapperTest
     @Test
     void testDeleteByPrimaryKey()
     {
-        int i = userInfoMapper.deleteByPrimaryKey("201811701300");
+        int i = userInfoMapper.deleteByPrimaryKey("201820182018");
         System.out.println("影响行数：" + i);
     }
 
@@ -106,27 +106,27 @@ class UserInfoMapperTest
     void testInsert()
     {
         String password1 = DigestUtil.md5Hex("0123456789");
-        // int i1 = userInfoMapper.insert(new UserInfo("201811701308", password1, "志宏", "男", "1234567@qq.com", "14770697894", 3));
+        // int i1 = userInfoMapper.insert(new UserInfo("201820182018", password1, "小宏", "男", "1234567@qq.com", "14770697894", 3));
         // System.out.println("影响行数：" + i1);
         //
         // String password2 = Encrypt.encryptMD5("0123456789");
-        // int i2 = userInfoMapper.insert(new UserInfo("201811701309", password2, "敏玲", "女", "12345678@qq.com", "14770697893", 3));
+        // int i2 = userInfoMapper.insert(new UserInfo("201820182019", password2, "小敏", "女", "12345678@qq.com", "14770697893", 3));
         // System.out.println("影响行数：" + i2);
         //
         // String password3 = Encrypt.encryptMD5("0123456789");
-        // int i3 = userInfoMapper.insert(new UserInfo("201811701310", password3, "文琪", "女", "123456789@qq.com", "14770697892", 3));
+        // int i3 = userInfoMapper.insert(new UserInfo("201820182020", password3, "小琪", "女", "123456789@qq.com", "14770697892", 3));
         // System.out.println("影响行数：" + i3);
 
-        userMapper.insert(new User("201811701308", password1, 3));
-        userMapper.insert(new User("201811701309", password1, 3));
-        userMapper.insert(new User("201811701310", password1, 3));
+        userMapper.insert(new User("201820182018", password1, 3));
+        userMapper.insert(new User("201820182019", password1, 3));
+        userMapper.insert(new User("201820182020", password1, 3));
 
     }
 
     @Test
     void updateByPrimaryKeySelective()
     {
-        int i = userInfoMapper.updateByPrimaryKeySelective(new UserInfo("201811701307", "阿生", null, null, null, null));
+        int i = userInfoMapper.updateByPrimaryKeySelective(new UserInfo("201820182018", "小生", null, null, null, null));
         System.out.println("影响行数：" + i);
     }
 

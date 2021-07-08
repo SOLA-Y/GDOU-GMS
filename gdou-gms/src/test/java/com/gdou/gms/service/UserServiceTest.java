@@ -22,11 +22,8 @@ class UserServiceTest
         String password = DigestUtil.md5Hex("1234567890");
 
         UserInfo userInfo = new UserInfo();
-        userInfo.setUserid("201811701307");
-        // userInfo.setMail("12296@qq.com");
-
-        // 1234567890：e807f1fcf82d132f9bb018ca6738a19f
-        // 123456789：25f9e794323b453885f5181f1b624d0b
+        userInfo.setUserid("201820182018");
+        // userInfo.setMail("123456789@qq.com");
 
         User user = new User(userInfo.getUserid() + "2", password, null);
 

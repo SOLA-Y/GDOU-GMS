@@ -47,8 +47,6 @@ public class UserController
 
             for (FieldError error : errors)
             {
-                System.out.println(error.getField() + "：" + error.getDefaultMessage());
-
                 jsonObject.putOpt(error.getField(), error.getDefaultMessage());
             }
 
@@ -64,9 +62,6 @@ public class UserController
 
             jsonObject.putOpt("userInfo", userInfo);
             jsonObject.putOpt("token", token);
-
-            // session.setAttribute("user", userInfo);
-            // System.out.println("sessionId=" + session.getId());
         }
         else
         {
@@ -78,17 +73,15 @@ public class UserController
     }
 
     // 添加普通用户，返回添加用户数量，-1表示添加失败
-    @PostMapping("/addUsers")
+    @GetMapping("/addUsers")
     public Integer addUsers(@RequestParam("jsonString") String jsonString)
     {
-        System.out.println(jsonString);
-
         return userService.addUsers(jsonString);
     }
 
     // 设置管理员权限
     @GetMapping("/setAdmin")
-    public Boolean setAdministrator(@RequestParam(value = "userId") String userId)
+    public Boolean setAdministrator(@RequestParam("userId") String userId)
     {
         try
         {
@@ -111,22 +104,18 @@ public class UserController
     }
 
     // 用户自己更新本人信息
-    @PostMapping("/updateUserInfoBySelf")
+    @GetMapping("/updateUserInfoBySelf")
     public Object updateUserInfoBySelf(@RequestParam("userId") String userId, @RequestParam("mail") String mail, @RequestParam("phone") String phone, @RequestParam("code") String code)
     {
-        JSONObject jsonObject = new JSONObject();
-
         if (RandomCharUtil.getMinute(sendTime, new Date()) > 10)
         {
             // 验证码失效
-            jsonObject.putOpt("validateCode", "验证码失效");
-            return jsonObject;
+            return "invalid";
         }
         if (!validateCode.equals(code))
         {
             // 验证码错误
-            jsonObject.putOpt("validateCode", "验证码错误");
-            return jsonObject;
+            return "error";
         }
 
         UserInfo userInfo = new UserInfo(userId, null, null, mail, phone, null);
@@ -147,12 +136,13 @@ public class UserController
     {
         validateCode = RandomCharUtil.createValidateCode();
         sendTime = new Date();
+
         return mailService.sendValidateCodeMail(userInfo, validateCode, sendTime);
     }
 
     // 查询一个用户的信息
     @GetMapping("/queryUserInfo")
-    public UserInfo queryUserInfo(@RequestParam(value = "userId") String userId)
+    public UserInfo queryUserInfo(@RequestParam("userId") String userId)
     {
         return userService.queryUserInfo(userId);
     }
@@ -173,14 +163,14 @@ public class UserController
 
     // 删除用户
     @GetMapping("/deleteUser")
-    public Boolean deleteUser(@RequestParam(value = "userId") String userId)
+    public Boolean deleteUser(@RequestParam("userId") String userId)
     {
         return userService.deleteUser(userId);
     }
 
     // 移除管理员权限
     @GetMapping("/removeAdmin")
-    public Boolean removeAdministrator(@RequestParam(value = "userId") String userId)
+    public Boolean removeAdministrator(@RequestParam("userId") String userId)
     {
         try
         {

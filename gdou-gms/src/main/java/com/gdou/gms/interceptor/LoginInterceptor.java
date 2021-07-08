@@ -38,17 +38,13 @@ public class LoginInterceptor implements HandlerInterceptor
 
         String token = request.getHeader("token");
 
-        System.out.println("token=" + token);
-
         // 验证token有效性
         if (JwtUtil.checkToken(token))
         {
-            System.out.println("可以");
             return true;
         }
         else
         {
-            System.out.println("不可以");
             response.setHeader("Token", "Disable");
             return false;
         }
@@ -67,7 +63,6 @@ public class LoginInterceptor implements HandlerInterceptor
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception
     {
-
     }
 
     /**
@@ -82,6 +77,5 @@ public class LoginInterceptor implements HandlerInterceptor
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception
     {
-
     }
 }

@@ -23,7 +23,7 @@ class RegulationServiceTest
     @Test
     void createRegulation()
     {
-        Regulation regulation = new Regulation(null, "201811701307", "阿生的标题", new Date(), "阿生随便写的内容");
+        Regulation regulation = new Regulation(null, "201820182018", "阿生的标题", new Date(), "阿生随便写的内容");
         regulationMapper.insert(regulation);
     }
 
